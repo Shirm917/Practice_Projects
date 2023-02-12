@@ -8,7 +8,7 @@ const LittleLemonHeader = () => {
           padding: 40,
           fontSize: 30,
           color: "black",
-          textAlign: "center",
+          textAlign: "center"
         }}
       >
         Little Lemon

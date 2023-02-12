@@ -12,10 +12,10 @@ const LittleLemonFooter = () => {
         style={{
           textAlign: "center",
           fontSize: 18,
-          color: "black",
+          color: "black"
         }}
       >
-        All rights reserved by Little Lemon, 2022
+        All rights reserved by Little Lemon, 2022{" "}
       </Text>
     </View>
   );
