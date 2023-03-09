@@ -35,7 +35,7 @@ const Winning = () => {
     <>
       <p>{message}</p>
       {/* Just for now */}
-      <button onClick={resetChoices}>Reset</button>
+      {/* <button onClick={resetChoices}>Reset</button> */}
     </>
   );
 };
