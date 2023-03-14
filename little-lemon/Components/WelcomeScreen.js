@@ -8,13 +8,15 @@ import {
   KeyboardAvoidingView,
   Platform,
   Image,
+  useColorScheme,
 } from "react-native";
 
 const WelcomeScreen = () => {
+  const colorScheme = useColorScheme();
   const [firstName, setFirstName] = useState("");
   return (
     <KeyboardAvoidingView
-      style={welcomeStyles.container}
+      style={[welcomeStyles.container, colorScheme === "light" ? welcomeStyles.containerLightMode : welcomeStyles.containerDarkMode]}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <ScrollView keyboardDismissMode="on-drag" indicatorStyle="white">
@@ -25,13 +27,14 @@ const WelcomeScreen = () => {
             resizeMode="cover"
             alt="Little Lemon Logo"
           />
-          <Text style={welcomeStyles.headerText}>Little Lemon </Text>
+          <Text style={[welcomeStyles.headerText, colorScheme === "light" ? welcomeStyles.textLightMode : welcomeStyles.textDarkMode]}>Little Lemon </Text>
         </View>
-        <Text style={welcomeStyles.bodyText}>
+        <Text style={[welcomeStyles.bodyText, colorScheme === "light" ? welcomeStyles.textLightMode : welcomeStyles.textDarkMode]}>
           Little Lemon is a charming neighborhood bistro that serves simple food
           and classic cocktails in a lively but casual environment. We would
           love to hear more about your experience with us!
         </Text>
+        <Text>{colorScheme}</Text>
         {/* <TextInput
           style={welcomeStyles.input}
           value={firstName}
@@ -47,6 +50,12 @@ const welcomeStyles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  containerDarkMode: {
+    backgroundColor: "#333",
+  },
+  containerLightMode: {
+    backgroundColor: "#fff",
+  },
   header: {
     flexDirection: "row",
     justifyContent: "center",
@@ -58,15 +67,21 @@ const welcomeStyles = StyleSheet.create({
     paddingTop: 30,
     paddingBottom: 10,
     fontSize: 30,
-    color: "#edefee",
+    // color: "#edefee",
     textAlign: "center",
   },
   bodyText: {
     padding: 20,
     fontSize: 24,
     marginVertical: 8,
-    color: "#edefee",
+    // color: "#edefee",
     textAlign: "center",
+  },
+  textDarkMode: {
+    color: "#edefee",
+  },
+  textLightMode: {
+    color: "#333",
   },
   input: {
     height: 40,
