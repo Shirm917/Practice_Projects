@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 const WelcomeScreen = () => {
-  const [firstName, onChangeFirstName] = useState("");
+  const [firstName, setFirstName] = useState("");
   return (
     <KeyboardAvoidingView style={welcomeStyles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <ScrollView
@@ -25,7 +25,7 @@ const WelcomeScreen = () => {
         <TextInput
           style={welcomeStyles.input}
           value={firstName}
-          onChangeText={onChangeFirstName}
+          onChangeText={setFirstName}
           placeholder="First Name"
         />
       </ScrollView>
@@ -56,7 +56,7 @@ const welcomeStyles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: "edefee",
+    borderColor: "#edefee",
     backgroundColor: "white",
   },
 });

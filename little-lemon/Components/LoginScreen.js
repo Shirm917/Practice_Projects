@@ -6,11 +6,13 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  Pressable,
 } from "react-native";
 
 const LoginScreen = () => {
-  const [email, onChangeEmail] = useState("");
-  const [password, onChangePassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <KeyboardAvoidingView
@@ -19,21 +21,33 @@ const LoginScreen = () => {
     >
       <ScrollView keyboardDismissMode="on-drag">
         <Text style={styles.headerText}>Welcome to Little Lemon</Text>
-        <Text style={styles.regularText}>Login to continue</Text>
-        <TextInput
-          style={styles.input}
-          value={email}
-          onChangeText={onChangeEmail}
-          placeholder="Email"
-          keyboardType="email-address"
-        />
-        <TextInput
-          style={styles.input}
-          value={password}
-          onChangeText={onChangePassword}
-          placeholder="Password"
-          secureTextEntry={true}
-        />
+        {isLoggedIn ? (
+          <Text style={styles.regularText}>You are logged in!</Text>
+        ) : (
+          <>
+            <Text style={styles.regularText}>Login to continue</Text>
+            <TextInput
+              style={styles.input}
+              value={email}
+              onChangeText={setEmail}
+              placeholder="Email"
+              keyboardType="email-address"
+            />
+            <TextInput
+              style={styles.input}
+              value={password}
+              onChangeText={setPassword}
+              placeholder="Password"
+              secureTextEntry={true}
+            />
+            <Pressable
+              style={styles.button}
+              onPress={() => setIsLoggedIn(!isLoggedIn)}
+            >
+              <Text style={styles.buttonText}>Log in</Text>
+            </Pressable>
+          </>
+        )}
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -46,14 +60,14 @@ const styles = StyleSheet.create({
   headerText: {
     padding: 40,
     fontSize: 30,
-    color: "edefee",
+    color: "white",
     textAlign: "center",
   },
   regularText: {
     fontSize: 24,
     padding: 20,
     marginVertical: 8,
-    color: "edefee",
+    color: "white",
     textAlign: "center",
   },
   input: {
@@ -64,6 +78,19 @@ const styles = StyleSheet.create({
     borderColor: "edefee",
     backgroundColor: "white",
     margin: 12,
+  },
+  button: {
+    backgroundColor: "#ee9972",
+    borderColor: "#ee9972",
+    padding: 10,
+    marginVertical: 8,
+    margin: 100,
+    borderWidth: 2,
+    borderRadius: 50
+  },
+  buttonText: {
+    fontSize: 25,
+    textAlign: "center"
   },
 });
 
