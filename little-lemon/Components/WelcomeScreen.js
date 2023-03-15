@@ -34,7 +34,6 @@ const WelcomeScreen = () => {
           and classic cocktails in a lively but casual environment. We would
           love to hear more about your experience with us!
         </Text>
-        <Text>{colorScheme}</Text>
         {/* <TextInput
           style={welcomeStyles.input}
           value={firstName}
