@@ -9,6 +9,7 @@ const Welcome = ({ navigation }) => {
           style={welcomeStyles.logo}
           source={require("../assets/littleLemonLogo.png")}
           resizeMode="contain"
+          alt="Little Lemon Logo"
         />
         <Text style={welcomeStyles.logoText}>LEMON</Text>
       </View>

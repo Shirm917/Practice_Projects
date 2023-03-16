@@ -27,6 +27,7 @@ const Subscribe = () => {
             style={subscribeStyles.logo}
             source={require("../assets/little-lemon-logo-grey.png")}
             resizeMode="contain"
+            alt="Gray Little Lemon Logo"
         />
         <Text style={subscribeStyles.bodyText}>Subscribe to our newsletter for our {"\n"} latest delicious recipes!</Text>
         <TextInput
