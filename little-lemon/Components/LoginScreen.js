@@ -9,7 +9,7 @@ import {
   Pressable,
 } from "react-native";
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,33 +21,27 @@ const LoginScreen = () => {
     >
       <ScrollView keyboardDismissMode="on-drag">
         <Text style={styles.headerText}>Welcome to Little Lemon</Text>
-        {isLoggedIn ? (
-          <Text style={styles.regularText}>You are logged in!</Text>
-        ) : (
-          <>
-            <Text style={styles.regularText}>Login to continue</Text>
-            <TextInput
-              style={styles.input}
-              value={email}
-              onChangeText={setEmail}
-              placeholder="Email"
-              keyboardType="email-address"
-            />
-            <TextInput
-              style={styles.input}
-              value={password}
-              onChangeText={setPassword}
-              placeholder="Password"
-              secureTextEntry={true}
-            />
-            <Pressable
-              style={styles.button}
-              onPress={() => setIsLoggedIn(!isLoggedIn)}
-            >
-              <Text style={styles.buttonText}>Log in</Text>
-            </Pressable>
-          </>
-        )}
+        <Text style={styles.regularText}>Login to continue</Text>
+        <TextInput
+          style={styles.input}
+          value={email}
+          onChangeText={setEmail}
+          placeholder="Email"
+          keyboardType="email-address"
+        />
+        <TextInput
+          style={styles.input}
+          value={password}
+          onChangeText={setPassword}
+          placeholder="Password"
+          secureTextEntry={true}
+        />
+        <Pressable
+          style={styles.button}
+          onPress={() => navigation.navigate("Welcome")}
+        >
+          <Text style={styles.buttonText}>Log in</Text>
+        </Pressable>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -56,7 +50,7 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#333"
+    backgroundColor: "#333",
   },
   headerText: {
     padding: 40,
@@ -87,11 +81,11 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     margin: 100,
     borderWidth: 2,
-    borderRadius: 50
+    borderRadius: 50,
   },
   buttonText: {
     fontSize: 25,
-    textAlign: "center"
+    textAlign: "center",
   },
 });
 
