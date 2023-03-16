@@ -1,7 +1,9 @@
+import "react-native-gesture-handler";
 import { StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import LittleLemonHeader from "./Components/LittleLemonHeader";
 import LittleLemonFooter from "./Components/LittleLemonFooter";
@@ -13,32 +15,17 @@ const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
+const Drawer = createDrawerNavigator();
+
 export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.container}>
         <LittleLemonHeader />
-        <Tab.Navigator
-          initialRouteName="Login"
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-
-              if (route.name === "Welcome") {
-                iconName = focused ? "ios-home" : "ios-home-outline";
-              } else if (route.name === "Login") {
-                iconName = "ios-enter"
-              }
-
-              return <Ionicons name={iconName} size={size} color={color} />
-            },
-            tabBarActiveTintColor: "red",
-            tabBarInactiveTintColor: "grey"
-          })}
-        >
-          <Tab.Screen name="Welcome" component={WelcomeScreen} />
-          <Tab.Screen name="Login" component={LoginScreen} />
-        </Tab.Navigator>
+        <Drawer.Navigator useLegacyImplementation initialRouteName="Welcome">
+          <Drawer.Screen name="Welcome" component={WelcomeScreen} />
+          <Drawer.Screen name="Login" component={LoginScreen} />
+        </Drawer.Navigator>
       </View>
       <View style={styles.footer}>
         <LittleLemonFooter />
