@@ -1,26 +1,28 @@
-import "react-native-gesture-handler";
+// import "react-native-gesture-handler";
 import { StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import Ionicons from "@expo/vector-icons/Ionicons";
+// import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { createDrawerNavigator } from "@react-navigation/drawer";
+// import Ionicons from "@expo/vector-icons/Ionicons";
 import LittleLemonHeader from "./Components/LittleLemonHeader";
 import LittleLemonFooter from "./Components/LittleLemonFooter";
 import WelcomeScreen from "./Components/WelcomeScreen";
-import MenuItems from "./Components/MenuItems";
-import LoginScreen from "./Components/LoginScreen";
+// import MenuItems from "./Components/MenuItems";
+// import LoginScreen from "./Components/LoginScreen";
+import RootNavigator from "./navigators/RootNavigator";
 
-const Stack = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
 
-const Tab = createBottomTabNavigator();
+// const Tab = createBottomTabNavigator();
 
-const Drawer = createDrawerNavigator();
+// const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <View style={styles.container}>
+      <RootNavigator/>
+      {/* <View style={styles.container}>
         <LittleLemonHeader />
         <Drawer.Navigator useLegacyImplementation initialRouteName="Welcome">
           <Drawer.Screen name="Welcome" component={WelcomeScreen} />
@@ -29,7 +31,7 @@ export default function App() {
       </View>
       <View style={styles.footer}>
         <LittleLemonFooter />
-      </View>
+      </View> */}
     </NavigationContainer>
   );
 }
