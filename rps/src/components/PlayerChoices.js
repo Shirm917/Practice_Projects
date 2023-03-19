@@ -7,13 +7,13 @@ const PlayerChoices = () => {
   const {playerChoice} = useContext(AppContext);
   return (
     <section className="playerChoices">
-      <ChoicePic choice={playerChoice}/>
-      <p>Player Choice: {playerChoice}</p>
-      <div>
+      <div className="buttons">
         <Button name="Rock" />
         <Button name="Paper" />
         <Button name="Scissors" />
       </div>
+      <p>Player Choice: {playerChoice}</p>
+      <ChoicePic choice={playerChoice}/>
     </section>
   );
 };

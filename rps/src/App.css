@@ -1,6 +1,15 @@
 .board {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background-image: url("./assets/imgs/marcel-strauss-c7wh6M7SgMU-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+p {
+  font-weight: 800;
+  font-size: 18px
 }

@@ -1,5 +1,4 @@
 import { useState, useEffect, createContext } from "react";
-import ComputerChoice from "./components/ComputerChoice";
 import GameBoard from "./components/GameBoard";
 import "./App.css";
 
