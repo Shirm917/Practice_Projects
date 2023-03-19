@@ -6,8 +6,8 @@ const GameBoard = () => {
   return (
     <section className="board">
       <PlayerChoices />
-      <ComputerChoice />
       <Winning />
+      <ComputerChoice />
     </section>
   );
 };
