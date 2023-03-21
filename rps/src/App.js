@@ -9,11 +9,6 @@ function App() {
   const [playerChoice, setPlayerChoice] = useState("");
   const [computerChoice, setComputerChoice] = useState("");
 
-  useEffect(() => {
-    console.log("Player Choice => ", playerChoice);
-    console.log("Computer Choice => ", computerChoice);
-  }, [computerChoice]);
-
   return (
     <AppContext.Provider
       value={{

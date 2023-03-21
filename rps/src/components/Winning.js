@@ -31,13 +31,7 @@ const Winning = () => {
     setComputerChoice("");
   };
 
-  return (
-    <>
-      <p>{message}</p>
-      {/* Just for now */}
-      {/* <button onClick={resetChoices}>Reset</button> */}
-    </>
-  );
+  return <p className="winningMsg">{message}</p>;
 };
 
 export default Winning;
