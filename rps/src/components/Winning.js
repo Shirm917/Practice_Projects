@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { AppContext } from "../App";
 
 const Winning = () => {
-  const { playerChoice, computerChoice, setPlayerChoice, setComputerChoice } =
+  const { playerChoice, computerChoice, computerPicks} =
     useContext(AppContext);
   const [message, setMessage] = useState("");
 
@@ -24,12 +24,7 @@ const Winning = () => {
     if (playerChoice && computerChoice) {
       determineWinner();
     }
-  }, [computerChoice]);
-
-  const resetChoices = () => {
-    setPlayerChoice("");
-    setComputerChoice("");
-  };
+  }, [computerPicks]);
 
   return <p className="winningMsg">{message}</p>;
 };

@@ -8,6 +8,8 @@ export const AppContext = createContext(null);
 function App() {
   const [playerChoice, setPlayerChoice] = useState("");
   const [computerChoice, setComputerChoice] = useState("");
+  const [playerPicks, setPlayerPicks] = useState(0);
+  const [computerPicks, setComputerPicks] = useState(0);
 
   return (
     <AppContext.Provider
@@ -16,6 +18,10 @@ function App() {
         setPlayerChoice,
         computerChoice,
         setComputerChoice,
+        playerPicks,
+        setPlayerPicks,
+        computerPicks,
+        setComputerPicks
       }}
     >
       <GameBoard />

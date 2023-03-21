@@ -3,7 +3,7 @@ import { AppContext } from "../App";
 import ChoicePic from "./ChoicePic";
 
 const ComputerChoice = () => {
-  const { computerChoice, setComputerChoice, playerChoice } =
+  const { computerChoice, setComputerChoice, playerChoice,setComputerPicks, playerPicks} =
     useContext(AppContext);
 
   useEffect(() => {
@@ -11,8 +11,9 @@ const ComputerChoice = () => {
       const choices = ["Rock", "Paper", "Scissors"];
       const randomNum = Math.floor(Math.random() * 3);
       setComputerChoice(choices[randomNum]);
+      setComputerPicks((pick) => pick + 1)
     }
-  }, [playerChoice]);
+  }, [playerPicks]);
 
   return (
     <section className="computerChoices">
