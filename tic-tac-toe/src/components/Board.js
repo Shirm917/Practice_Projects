@@ -1,15 +1,17 @@
+import BoardSection from "./BoardSection";
+
 const Board = () => {
     return (
         <section className="board">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <BoardSection/>
+            <BoardSection/>
+            <BoardSection/>
+            <BoardSection/>
+            <BoardSection/>
+            <BoardSection/>
+            <BoardSection/>
+            <BoardSection/>
+            <BoardSection/>
         </section>
      );
 }
