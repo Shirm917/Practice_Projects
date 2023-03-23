@@ -9,6 +9,7 @@ export const AppContext = createContext(null);
 function App() {
   const [turnNum, setTurnNum] = useState(1);
   const [resetBoard, setResetBoard] = useState(false);
+  const [gameType, setGameType] = useState("");
 
   return (
     <AppContext.Provider
@@ -16,7 +17,9 @@ function App() {
         turnNum,
         setTurnNum,
         resetBoard,
-        setResetBoard
+        setResetBoard,
+        gameType,
+        setGameType
       }}
     >
       <section className="container">

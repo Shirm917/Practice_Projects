@@ -4,29 +4,23 @@ import GameButton from './GameButton';
 import { AppContext } from "../App";
 
 const Buttons = () => {
-    const {setTurnNum,setResetBoard} = useContext(AppContext);
-    const versusAI = () => {
-        // For Now
-        console.log("Versus AI");
+    const {setTurnNum,setResetBoard,setGameType} = useContext(AppContext);
+    const versusAi = () => {
+        setGameType("Ai")
     };
 
     const twoPlayer = () => {
-        // For Now
-        console.log("Two Player");
+        setGameType("Two Player")
     };
 
     const resetBoard = () => {
         setTurnNum(1);
-        // const boardSections = document.querySelectorAll(".boardSection");
-        // for (const section of boardSections) {
-        //     section.textContent = "";
-        // }
         setResetBoard(true);
     };
-    
+
     return (
         <Stack spacing={2} direction="row">
-            <GameButton text="Versus AI" handleClick={versusAI}/>
+            <GameButton text="Versus Ai" handleClick={versusAi}/>
             <GameButton text="2 Players" handleClick={twoPlayer}/>
             <GameButton text="Reset Board" handleClick={resetBoard}/>
         </Stack>
