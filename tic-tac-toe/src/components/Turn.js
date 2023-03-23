@@ -9,9 +9,9 @@ const Turn = () => {
         if (turnNum > 9) {
             setTurn("Game Over")
         } else if (turnNum % 2 === 0) {
-            setTurn("X's turn")
-        } else if (turnNum % 2 === 1) {
             setTurn("O's turn")
+        } else if (turnNum % 2 === 1) {
+            setTurn("X's turn")
         }
     }, [turnNum]);
 
