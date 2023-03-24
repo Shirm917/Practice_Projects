@@ -3,6 +3,7 @@ import BoardSection from "./BoardSection";
 const Board = () => {
     return (
         <section className="board">
+            <BoardSection num={0}/>
             <BoardSection num={1}/>
             <BoardSection num={2}/>
             <BoardSection num={3}/>
@@ -11,7 +12,6 @@ const Board = () => {
             <BoardSection num={6}/>
             <BoardSection num={7}/>
             <BoardSection num={8}/>
-            <BoardSection num={9}/>
         </section>
      );
 }
