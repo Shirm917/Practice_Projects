@@ -10,6 +10,7 @@ function App() {
   const [turnNum, setTurnNum] = useState(1);
   const [resetBoard, setResetBoard] = useState(false);
   const [gameType, setGameType] = useState("");
+  const [winnerMsg, setWinnerMsg] = useState("");
 
   return (
     <AppContext.Provider
@@ -19,12 +20,15 @@ function App() {
         resetBoard,
         setResetBoard,
         gameType,
-        setGameType
+        setGameType,
+        winnerMsg,
+        setWinnerMsg
       }}
     >
       <section className="container">
         <h1>TIC TAC TOE</h1>
         <Buttons/>
+        <p>{winnerMsg}</p>
         <Turn/>
         <Board/>
       </section>
