@@ -4,7 +4,7 @@ import GameButton from './GameButton';
 import { AppContext } from "../App";
 
 const Buttons = () => {
-    const {setTurnNum,setResetBoard,setGameType} = useContext(AppContext);
+    const {setResetBoard,setGameType} = useContext(AppContext);
     const versusAi = () => {
         setGameType("Ai")
     };
@@ -14,7 +14,6 @@ const Buttons = () => {
     };
 
     const resetBoard = () => {
-        setTurnNum(1);
         setResetBoard(true);
     };
 

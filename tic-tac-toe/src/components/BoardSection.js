@@ -14,27 +14,30 @@ const BoardSection = (props) => {
   } = useContext(AppContext);
   const { sectionNum } = props;
   const [piece, setPiece] = useState("");
-  const [numArray, setNumArray] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+//   const [initialNumArray, setInitialNumArray] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+//   const [numArray, setNumArray] = useState(initialNumArray);
   const [playerWent, setPlayerWent] = useState(false);
 
-  //   const deleteNumber = (num) => {
-  //       setNumArray(prevNumArray => {
-  //           const filteredNumArray = prevNumArray.filter(element => element !== num);
-  //           return filteredNumArray;
-  //       });
-  //   };
+  const numArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    const deleteNumber = (num) => {
+        // console.log(numArray);
+        const index = findIndex((element) => num === element);
+        numArray.splice(index, 1);
+        // setNumArray(filteredNumArray);
+    };
 
   const versusAi = () => {
     if (turnNum > 9 || piece !== "" || winnerMsg) {
       return;
     } else if (turnNum % 2 === 1) {
       setPiece("X");
-      setNumArray(
-        (prevNumArray) =>
-        prevNumArray.filter((element) => {
-          return element !== sectionNum;
-        })
-      );
+    //   setNumArray((prevNumArray) =>
+    //     prevNumArray.filter((element) => {
+    //       return element !== sectionNum;
+    //     })
+    //   );
+    deleteNumber(sectionNum);
+    //   setNumArray(filteredNumArray);
       setTurnNum((num) => num + 1);
       setPlayerWent(true);
     }
@@ -42,19 +45,25 @@ const BoardSection = (props) => {
 
   useEffect(() => {
     if (playerWent && turnNum <= 9) {
+    //   const filteredNumArray = numArray.filter((element) => {
+    //     return element !== sectionNum;
+    //   });
       const randomNum = Math.floor(Math.random() * numArray.length);
       const aiChoice = numArray[randomNum];
-      setNumArray((prevNumArray) =>
-        prevNumArray.filter((element) => {
-          return element !== aiChoice;
-        })
-      );
+      //   setNumArray((prevNumArray) =>
+      //     prevNumArray.filter((element) => {
+      //       return element !== aiChoice;
+      //     })
+      //   );
+      deleteNumber(aiChoice);
+    //   setNumArray(filteredNumArray);
       const board = document.querySelector(".board");
       board.children[aiChoice].textContent = "O";
       setTurnNum((num) => num + 1);
+    //   setNumArray(filteredNumArray);
     }
     setPlayerWent(false);
-  }, [playerWent, numArray]);
+  }, [playerWent]);
 
   const addPiece = () => {
     if (turnNum > 9 || piece !== "" || winnerMsg) {
@@ -67,9 +76,9 @@ const BoardSection = (props) => {
     setTurnNum((num) => num + 1);
   };
 
-  useEffect(() => {
-    console.log(numArray);
-  }, [numArray]);
+//   useEffect(() => {
+//     console.log(numArray);
+//   }, [numArray]);
 
   useEffect(() => {
     if (resetBoard) {
@@ -81,9 +90,10 @@ const BoardSection = (props) => {
       setWinnerMsg("");
       setGameType("");
       setTurnNum(1);
+      setInitialNumArray([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+      setNumArray([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+      setResetBoard(false);
     }
-    setResetBoard(false);
-    setNumArray([0, 1, 2, 3, 4, 5, 6, 7, 8]);
   }, [resetBoard]);
 
   return (
