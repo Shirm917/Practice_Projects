@@ -29,7 +29,6 @@ const Board = () => {
                 for (let j = 0; j < patterns[i].length; j++) {
                     piecesArr.push(board.children[patterns[i][j]].textContent);
                 }
-                console.log(piecesArr);
                 const winnerCheck = piecesArr.every((element,i,arr) => {
                     return element === arr[0] && element !== "";
                 });
@@ -42,15 +41,15 @@ const Board = () => {
 
     return (
         <section className="board">
-            <BoardSection num={0}/>
-            <BoardSection num={1}/>
-            <BoardSection num={2}/>
-            <BoardSection num={3}/>
-            <BoardSection num={4}/>
-            <BoardSection num={5}/>
-            <BoardSection num={6}/>
-            <BoardSection num={7}/>
-            <BoardSection num={8}/>
+            <BoardSection sectionNum={0}/>
+            <BoardSection sectionNum={1}/>
+            <BoardSection sectionNum={2}/>
+            <BoardSection sectionNum={3}/>
+            <BoardSection sectionNum={4}/>
+            <BoardSection sectionNum={5}/>
+            <BoardSection sectionNum={6}/>
+            <BoardSection sectionNum={7}/>
+            <BoardSection sectionNum={8}/>
         </section>
      );
 }
