@@ -1,9 +1,10 @@
 import Button from '@mui/material/Button';
 
 const GameButton = (props) => {
-    const {text, handleClick} = props;
+    const {text, handleClick,clicked} = props;
+
     return (
-        <Button variant="text" onClick={handleClick}>{text}</Button>
+        <Button color={clicked === text ? "error" : "primary"}  variant="text" onClick={handleClick}>{text}</Button>
       );
 }
 

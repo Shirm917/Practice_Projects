@@ -11,6 +11,8 @@ function App() {
   const [resetBoard, setResetBoard] = useState(false);
   const [gameType, setGameType] = useState("");
   const [winnerMsg, setWinnerMsg] = useState("");
+  const [numArray, setNumArray] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+  const [playerWent, setPlayerWent] = useState(false);
 
   return (
     <AppContext.Provider
@@ -22,7 +24,11 @@ function App() {
         gameType,
         setGameType,
         winnerMsg,
-        setWinnerMsg
+        setWinnerMsg,
+        numArray,
+        setNumArray,
+        playerWent,
+        setPlayerWent
       }}
     >
       <section className="container">
