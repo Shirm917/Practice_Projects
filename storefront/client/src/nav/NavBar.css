@@ -1,0 +1,10 @@
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.link {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
