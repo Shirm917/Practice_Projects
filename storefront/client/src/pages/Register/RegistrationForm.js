@@ -17,7 +17,7 @@ const RegistrationForm = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
+  const register = async (event) => {
     event.preventDefault();
     setErrorMsg("");
     try {
@@ -47,12 +47,12 @@ const RegistrationForm = () => {
       autoComplete="off"
       noValidate
     >
-      <FormInput id="firstName" label="First Name" value={firstName} setValue={setFirstName} type="text"/>
-      <FormInput id="lastName" label="Last Name" value={lastName} setValue={setLastName} type="text"/>
-      <FormInput id="email" label="Email" value={email} setValue={setEmail} type="email"/>
-      <FormInput id="username" label="Username" value={username} setValue={setUsername} type="text"/>
-      <FormInput id="password" label="Password" value={password} setValue={setPassword} type="password"/>
-      <FormButton buttonText="Register" onClick={handleSubmit}/>
+      <FormInput id="register-firstName" label="First Name" value={firstName} setValue={setFirstName} type="text"/>
+      <FormInput id="register-lastName" label="Last Name" value={lastName} setValue={setLastName} type="text"/>
+      <FormInput id="register-email" label="Email" value={email} setValue={setEmail} type="email"/>
+      <FormInput id="register-username" label="Username" value={username} setValue={setUsername} type="text"/>
+      <FormInput id="register-password" label="Password" value={password} setValue={setPassword} type="password"/>
+      <FormButton buttonText="Register" onClick={register}/>
       <Modal />
     </Box>
   );
