@@ -10,7 +10,7 @@ export const register = async(req,res) => {
         .where("email",email);
 
         if (row || row.length > 0) {
-            return res.status(400).json({msg: "Email already exists"});
+            return res.status(400).json({errorMsg: "Email already exists"});
         };
 
         const hashedPass = md5(password);
@@ -25,6 +25,6 @@ export const register = async(req,res) => {
         });
         res.sendStatus(200);
     } catch (err) {
-        return res.status(400).json({msg: "Username already exists"});
+        return res.status(400).json({errorMsg: "Username already exists"});
     };
 };
