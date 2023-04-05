@@ -1,5 +1,5 @@
 import db from "../config/db.js";
-import md5 from md5;
+import md5 from "md5";
 
 export const register = async(req,res) => {
     const {firstName,lastName,email,username,password} = req.body;
@@ -9,7 +9,7 @@ export const register = async(req,res) => {
         .select("email")
         .where("email",email);
 
-        if (row || row.length > 0) {
+        if (row.length > 0) {
             return res.status(400).json({errorMsg: "Email already exists"});
         };
 
@@ -23,6 +23,7 @@ export const register = async(req,res) => {
             username,
             password: hashedPass
         });
+        
         res.sendStatus(200);
     } catch (err) {
         return res.status(400).json({errorMsg: "Username already exists"});

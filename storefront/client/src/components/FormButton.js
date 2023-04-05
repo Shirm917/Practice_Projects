@@ -1,9 +1,9 @@
 import Button from '@mui/material/Button';
 
 const FormButton = (props) => {
-    const {buttonText} = props;
+    const {buttonText,onClick} = props;
     return (
-        <Button variant="contained">{buttonText}</Button>
+        <Button variant="contained" onClick={onClick}>{buttonText}</Button>
       );
 }
 
