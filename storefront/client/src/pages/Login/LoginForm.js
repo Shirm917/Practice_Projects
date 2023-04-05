@@ -5,6 +5,7 @@ import axios from "axios";
 import Box from "@mui/material/Box";
 import FormInput from "../../components/FormInput";
 import FormButton from "../../components/FormButton";
+import Modal from "../../components/Modal";
 
 const LoginForm = () => {
   const { setErrorMsg } = useContext(AppContext);
@@ -45,6 +46,7 @@ const LoginForm = () => {
       <FormInput id="login-username/email" label="Username/Email" type="text" value={usernameEmail} setValue={setUsernameEmail}/>
       <FormInput id="login-password" label="Password" type="password" value={password} setValue={setPassword}/>
       <FormButton buttonText="Login" onClick={login}/>
+      <Modal/>
     </Box>
   );
 };
