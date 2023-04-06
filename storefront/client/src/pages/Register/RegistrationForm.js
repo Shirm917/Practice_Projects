@@ -40,7 +40,9 @@ const RegistrationForm = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
         width: "50%",
+        height: "80vh",
         margin: "0 auto",
       }}
       component="form"

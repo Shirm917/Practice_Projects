@@ -14,14 +14,14 @@ const LoginForm = () => {
 
   const navigate = useNavigate();
 
-  const login = async(event) => {
+  const login = async (event) => {
     event.preventDefault();
     setErrorMsg("");
 
     try {
       await axios.post("/login", {
         usernameEmail,
-        password
+        password,
       });
 
       // For now navigate to homePage to see that it worked
@@ -29,24 +29,38 @@ const LoginForm = () => {
     } catch (err) {
       setErrorMsg(err.response.data.errorMsg);
     }
-  }
+  };
 
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
         width: "50%",
+        height: "80vh",
         margin: "0 auto",
       }}
       component="form"
       autoComplete="off"
       noValidate
     >
-      <FormInput id="login-username/email" label="Username/Email" type="text" value={usernameEmail} setValue={setUsernameEmail}/>
-      <FormInput id="login-password" label="Password" type="password" value={password} setValue={setPassword}/>
-      <FormButton buttonText="Login" onClick={login}/>
-      <Modal/>
+      <FormInput
+        id="login-username/email"
+        label="Username/Email"
+        type="text"
+        value={usernameEmail}
+        setValue={setUsernameEmail}
+      />
+      <FormInput
+        id="login-password"
+        label="Password"
+        type="password"
+        value={password}
+        setValue={setPassword}
+      />
+      <FormButton buttonText="Login" onClick={login} />
+      <Modal />
     </Box>
   );
 };
