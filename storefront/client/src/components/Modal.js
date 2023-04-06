@@ -12,13 +12,9 @@ function Modal() {
 
   useEffect(() => {
     if (errorMsg) {
-        handleClickOpen();
+      setOpen(true);
     }
   }, [errorMsg]);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
     setOpen(false);
