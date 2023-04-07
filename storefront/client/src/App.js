@@ -10,6 +10,7 @@ export const AppContext = createContext(null);
 
 function App() {
   const [errorMsg, setErrorMsg] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     setErrorMsg("");
@@ -20,6 +21,8 @@ function App() {
       value={{
         errorMsg,
         setErrorMsg,
+        isLoggedIn,
+        setIsLoggedIn
       }}
     >
       <NavBar />

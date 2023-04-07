@@ -8,7 +8,7 @@ import FormButton from "../../components/FormButton";
 import Modal from "../../components/Modal";
 
 const LoginForm = () => {
-  const { setErrorMsg } = useContext(AppContext);
+  const { setErrorMsg,setIsLoggedIn } = useContext(AppContext);
   const [usernameEmail, setUsernameEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,6 +25,7 @@ const LoginForm = () => {
       });
 
       // For now navigate to homePage to see that it worked
+      setIsLoggedIn(true);
       navigate("/");
     } catch (err) {
       setErrorMsg(err.response.data.errorMsg);
