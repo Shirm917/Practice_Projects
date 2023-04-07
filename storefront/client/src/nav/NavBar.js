@@ -18,6 +18,9 @@ const NavBar = () => {
           <NavLink className="link" to="/login">
             Login
           </NavLink>
+          <NavLink className="link" to="/groceryStore">
+            Grocery Store
+          </NavLink>
         </Toolbar>
       </AppBar>
     </Box>

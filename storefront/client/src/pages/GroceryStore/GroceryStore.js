@@ -3,7 +3,7 @@ import axios from "axios";
 import { AppContext } from "../../App";
 import Modal from "../../components/Modal";
 
-const StoreHome = () => {
+const GroceryStore = () => {
   const { setErrorMsg } = useContext(AppContext);
   const [products, setProducts] = useState([]);
 
@@ -11,7 +11,7 @@ const StoreHome = () => {
     const getProducts = async () => {
       try {
         const response = await axios.get("/products");
-        console.log(products);
+        console.log(response.data.products);
         setProducts(response.data.products);
       } catch (err) {
         setErrorMsg(err.response.data);
@@ -23,10 +23,10 @@ const StoreHome = () => {
   return (
     <section>
       <h1>Products</h1>
-        
+
       <Modal/>
     </section>
   );
 };
 
-export default StoreHome;
+export default GroceryStore;

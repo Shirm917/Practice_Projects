@@ -1,10 +1,15 @@
 .toolbar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
+    /* background-color: white; */
 }
 
 .link {
     color: #fff;
     text-decoration: none;
     margin-left: 10px;
+}
+
+.toolbar a.active {
+    color: #000;
 }
