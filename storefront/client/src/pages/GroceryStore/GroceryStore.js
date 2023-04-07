@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../../App";
+import ProductCard from "./ProductCard";
 import Modal from "../../components/Modal";
 
 const GroceryStore = () => {
@@ -11,7 +12,6 @@ const GroceryStore = () => {
     const getProducts = async () => {
       try {
         const response = await axios.get("/products");
-        console.log(response.data.products);
         setProducts(response.data.products);
       } catch (err) {
         setErrorMsg(err.response.data);
@@ -23,8 +23,11 @@ const GroceryStore = () => {
   return (
     <section>
       <h1>Products</h1>
-
-      <Modal/>
+      {products &&
+        products.map(product => {
+          return <ProductCard key={product.product_id} product={product} />;
+        })}
+      <Modal />
     </section>
   );
 };
