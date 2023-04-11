@@ -8,7 +8,8 @@ import FormButton from "../../components/FormButton";
 import Modal from "../../components/Modal";
 
 const RegistrationForm = () => {
-  const { errorMsg,setErrorMsg } = useContext(AppContext);
+  const { setErrorMsg, setModalTitle, count, setCount } =
+    useContext(AppContext);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,6 +17,12 @@ const RegistrationForm = () => {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setModalTitle("register");
+
+    return () => setModalTitle("");
+  }, []);
 
   const register = async (event) => {
     event.preventDefault();
@@ -50,16 +57,19 @@ const RegistrationForm = () => {
 
     if (!firstName || !lastName || !email || !username || !password) {
       setErrorMsg("Please fill everything out");
+      setCount(count + 1);
       return false;
     } else if (!emailRegex.test(email)) {
       setErrorMsg(
         "Email must contain an @ symbol and can only contain english characters, numbers and special characters."
       );
+      setCount(count + 1);
       return false;
     } else if (!passwordRegex.test(password)) {
       setErrorMsg(
         "Password must be at least 8 characters, must contain at least one letter and one number. Password can only contain english letters, numbers and special characters."
       );
+      setCount(count + 1);
       return false;
     }
     return true;
@@ -79,7 +89,6 @@ const RegistrationForm = () => {
       autoComplete="off"
       noValidate
     >
-      <p>{errorMsg}</p>
       <FormInput
         id="register-firstName"
         label="First Name"
@@ -118,7 +127,7 @@ const RegistrationForm = () => {
         type="password"
       />
       <FormButton buttonText="Register" onClick={register} />
-      <Modal />
+      <Modal title="register" />
     </Box>
   );
 };

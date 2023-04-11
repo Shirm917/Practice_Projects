@@ -6,33 +6,32 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 
-function Modal() {
-  const { errorMsg } = useContext(AppContext);
+function Modal(props) {
+  const { title } = props;
+  const { errorMsg, modalTitle,count } = useContext(AppContext);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (errorMsg) {
+    if (errorMsg && modalTitle === title) {
       setOpen(true);
     }
-  }, [errorMsg]);
+  }, [errorMsg,count]);
 
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
-    <div>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogContent>
-          <DialogContentText>{errorMsg}</DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} autoFocus>
-            Ok
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+    <Dialog open={open} onClose={handleClose}>
+      <DialogContent>
+        <DialogContentText>{errorMsg}</DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose} autoFocus>
+          Ok
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }
 

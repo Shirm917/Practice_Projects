@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../App";
 import axios from "axios";
@@ -8,11 +8,18 @@ import FormButton from "../../components/FormButton";
 import Modal from "../../components/Modal";
 
 const LoginForm = () => {
-  const { setErrorMsg,setIsLoggedIn } = useContext(AppContext);
+  const { setErrorMsg, setIsLoggedIn, setModalTitle, count, setCount } =
+    useContext(AppContext);
   const [usernameEmail, setUsernameEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setModalTitle("login");
+
+    return () => setModalTitle("");
+  }, []);
 
   const login = async (event) => {
     event.preventDefault();
@@ -29,6 +36,7 @@ const LoginForm = () => {
       navigate("/");
     } catch (err) {
       setErrorMsg(err.response.data.errorMsg);
+      setCount(count + 1);
     }
   };
 
@@ -61,7 +69,7 @@ const LoginForm = () => {
         setValue={setPassword}
       />
       <FormButton buttonText="Login" onClick={login} />
-      <Modal />
+      <Modal title="login" />
     </Box>
   );
 };
