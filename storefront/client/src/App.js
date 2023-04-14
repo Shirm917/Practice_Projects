@@ -12,12 +12,9 @@ export const AppContext = createContext(null);
 function App() {
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [modalTitle,setModalTitle] = useState("");
-  const [count,setCount] = useState("");
 
   useEffect(() => {
     setErrorMsg("");
-    setModalTitle("");
   }, []);
 
   return (
@@ -26,11 +23,7 @@ function App() {
         errorMsg,
         setErrorMsg,
         isLoggedIn,
-        setIsLoggedIn,
-        modalTitle,
-        setModalTitle,
-        count,
-        setCount
+        setIsLoggedIn
       }}
     >
       <NavBar />

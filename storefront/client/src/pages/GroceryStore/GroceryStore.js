@@ -2,11 +2,14 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../../App";
 import ProductCard from "./ProductCard";
-import Modal from "../../components/Modal";
 
 const GroceryStore = () => {
-  const { setErrorMsg } = useContext(AppContext);
+  const { errorMsg, setErrorMsg } = useContext(AppContext);
   const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setErrorMsg("");
+  }, []);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -23,11 +26,13 @@ const GroceryStore = () => {
   return (
     <section>
       <h1>Products</h1>
-      {products &&
-        products.map(product => {
+      {!products || products.length === 0 ? (
+        <p className="errorMsg">{errorMsg}</p>
+      ) : (
+        products.map((product) => {
           return <ProductCard key={product.product_id} product={product} />;
-        })}
-      <Modal />
+        })
+      )}
     </section>
   );
 };

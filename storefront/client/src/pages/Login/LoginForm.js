@@ -5,10 +5,9 @@ import axios from "axios";
 import Box from "@mui/material/Box";
 import FormInput from "../../components/FormInput";
 import FormButton from "../../components/FormButton";
-import Modal from "../../components/Modal";
 
 const LoginForm = () => {
-  const { setErrorMsg, setIsLoggedIn, setModalTitle, count, setCount } =
+  const { errorMsg,setErrorMsg, setIsLoggedIn } =
     useContext(AppContext);
   const [usernameEmail, setUsernameEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,9 +15,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setModalTitle("login");
-
-    return () => setModalTitle("");
+    setErrorMsg("");
   }, []);
 
   const login = async (event) => {
@@ -33,10 +30,10 @@ const LoginForm = () => {
 
       // For now navigate to homePage to see that it worked
       setIsLoggedIn(true);
+      setErrorMsg("");
       navigate("/");
     } catch (err) {
       setErrorMsg(err.response.data.errorMsg);
-      setCount(count + 1);
     }
   };
 
@@ -69,7 +66,7 @@ const LoginForm = () => {
         setValue={setPassword}
       />
       <FormButton buttonText="Login" onClick={login} />
-      <Modal title="login" />
+      <p className="errorMsg">{errorMsg}</p>
     </Box>
   );
 };

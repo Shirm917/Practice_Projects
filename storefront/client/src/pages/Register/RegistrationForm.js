@@ -5,10 +5,9 @@ import { AppContext } from "../../App";
 import Box from "@mui/material/Box";
 import FormInput from "../../components/FormInput";
 import FormButton from "../../components/FormButton";
-import Modal from "../../components/Modal";
 
 const RegistrationForm = () => {
-  const { setErrorMsg, setModalTitle, count, setCount } =
+  const { errorMsg, setErrorMsg } =
     useContext(AppContext);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -19,9 +18,7 @@ const RegistrationForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setModalTitle("register");
-
-    return () => setModalTitle("");
+    setErrorMsg("");
   }, []);
 
   const register = async (event) => {
@@ -42,6 +39,7 @@ const RegistrationForm = () => {
           username,
           password,
         });
+        setErrorMsg("");
         navigate("/login");
       }
     } catch (err) {
@@ -57,19 +55,16 @@ const RegistrationForm = () => {
 
     if (!firstName || !lastName || !email || !username || !password) {
       setErrorMsg("Please fill everything out");
-      setCount(count + 1);
       return false;
     } else if (!emailRegex.test(email)) {
       setErrorMsg(
         "Email must contain an @ symbol and can only contain english characters, numbers and special characters."
       );
-      setCount(count + 1);
       return false;
     } else if (!passwordRegex.test(password)) {
       setErrorMsg(
         "Password must be at least 8 characters, must contain at least one letter and one number. Password can only contain english letters, numbers and special characters."
       );
-      setCount(count + 1);
       return false;
     }
     return true;
@@ -127,7 +122,7 @@ const RegistrationForm = () => {
         type="password"
       />
       <FormButton buttonText="Register" onClick={register} />
-      <Modal title="register" />
+      <p className="errorMsg">{errorMsg}</p>
     </Box>
   );
 };
