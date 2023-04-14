@@ -7,7 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 const ProductPopUp = (props) => {
-    const {open,setOpen} = props;
+    const {open,setOpen, product} = props;
 
     const handleClose = () => {
         setOpen(false);
@@ -19,20 +19,13 @@ const ProductPopUp = (props) => {
         onClose={handleClose}
       >
         <DialogTitle>
-          {"Use Google's location service?"}
+          {product.name}
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
+            {product.nutritional_info}
           </DialogContentText>
         </DialogContent>
-        {/* <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose} autoFocus>
-            Agree
-          </Button>
-        </DialogActions> */}
       </Dialog>
      );
 }
