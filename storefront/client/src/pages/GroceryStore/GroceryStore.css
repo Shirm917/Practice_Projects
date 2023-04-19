@@ -58,6 +58,36 @@
   text-align: center;
 }
 
+.popUpHeader {
+  background-color: #0d60dd;
+}
+
+.popUpTitle {
+  color: #fff;
+}
+
+.popUpContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  margin-top: -10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 25px;
+}
+
+.productPopUp img {
+  width: 60%;
+  height: 40%;
+}
+
+.popUpContent div {
+  align-self: flex-end;
+  text-align: right;
+}
+
 
 @media only screen and (max-width: 600px) {
 
