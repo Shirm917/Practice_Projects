@@ -65,7 +65,7 @@ const ProductPopUp = (props) => {
         <DialogContentText
           sx={{ color: "#000", fontSize: 20, textAlign: "center" }}
         >
-          {product.description}
+          {product.description}.
         </DialogContentText>
       </DialogContent>
     </Dialog>

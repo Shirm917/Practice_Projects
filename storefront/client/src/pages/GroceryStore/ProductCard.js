@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import pancakes from "../../assets/pancakes.jpg";
 import ProductPopUp from "./ProductPopUp";
 import { Divider } from "@mui/material";
+import ProductQuantity from "./ProductQuantity";
 
 const ProductCard = (props) => {
   const { product } = props;
@@ -17,8 +18,8 @@ const ProductCard = (props) => {
   return (
     <>
       <ProductPopUp open={open} setOpen={setOpen} product={product} />
-      <Card className="productCard" onClick={() => setOpen(true)}>
-        <div className="product">
+      <Card className="productCard">
+        <div className="product" onClick={() => setOpen(true)}>
           <CardContent className="cardContent">
             <div>
               <Typography className="name">{product.name}</Typography>
@@ -31,7 +32,10 @@ const ProductCard = (props) => {
           <CardMedia className="cardMedia" image={pancakes} />
         </div>
       <Divider/>
-      <Button variant="text">Add</Button>
+      <CardActions>
+        <Button className="addBtn" variant="contained">Add</Button>
+        <ProductQuantity/>
+      </CardActions>
       {/* Place to add and subtract units, make this flex */}
       </Card>
     </>
