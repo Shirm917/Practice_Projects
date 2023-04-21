@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AppContext } from "../../App";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -12,8 +13,22 @@ import ProductQuantity from "./ProductQuantity";
 
 const ProductCard = (props) => {
   const { product } = props;
+  const { cart, setCart } = useContext(AppContext);
 
   const [open, setOpen] = useState(false);
+  const [quantity, setQuantity] = useState(0);
+
+  const addToCart = () => {
+    const cartProduct = {
+      product_id: product.product_id,
+      name: product.name,
+      quantity,
+      image_path: product.image_path,
+      price: product.price,
+    };
+    const updatedCart = [...cart, cartProduct];
+    setCart(updatedCart);
+  };
 
   return (
     <>
@@ -31,12 +46,18 @@ const ProductCard = (props) => {
           </CardContent>
           <CardMedia className="cardMedia" image={pancakes} />
         </div>
-      <Divider/>
-      <CardActions>
-        <Button className="addBtn" variant="contained">Add</Button>
-        <ProductQuantity/>
-      </CardActions>
-      {/* Place to add and subtract units, make this flex */}
+        <Divider />
+        <CardActions>
+          <Button className="addBtn" variant="contained" onClick={addToCart}>
+            Add
+          </Button>
+          <ProductQuantity
+            product={product}
+            quantity={quantity}
+            setQuantity={setQuantity}
+          />
+        </CardActions>
+        {/* Place to add and subtract units, make this flex */}
       </Card>
     </>
   );

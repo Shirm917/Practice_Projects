@@ -12,6 +12,7 @@ export const AppContext = createContext(null);
 function App() {
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [cart,setCart] = useState([]);
 
   useEffect(() => {
     setErrorMsg("");
@@ -23,7 +24,9 @@ function App() {
         errorMsg,
         setErrorMsg,
         isLoggedIn,
-        setIsLoggedIn
+        setIsLoggedIn,
+        cart,
+        setCart
       }}
     >
       <NavBar />

@@ -5,12 +5,16 @@ import ProductCard from "./ProductCard";
 import "./GroceryStore.css";
 
 const GroceryStore = () => {
-  const { errorMsg, setErrorMsg } = useContext(AppContext);
+  const { cart,errorMsg, setErrorMsg } = useContext(AppContext);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     setErrorMsg("");
   }, []);
+
+  useEffect(() => {
+    console.log(cart);
+},[cart])
 
   useEffect(() => {
     const getProducts = async () => {
