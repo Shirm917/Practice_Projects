@@ -37,17 +37,22 @@ function displayNumber(event) {
   }
   const displayValue = event.target.value;
   display.textContent += displayValue;
-  numbersArr.push(displayValue);
 }
 
 function setOperator(event) {
   operator = event.target.value;
   operatorClicked = true;
-}
+  pushToNumbersArr(display.textContent);
+};
+
+function pushToNumbersArr(number) {
+    numbersArr.push(number);
+};
 
 function doOperation() {
+  const operators = ["+", "-", "*", "/"];
+  pushToNumbersArr(display.textContent);
   let total;
-  for (let i = 0; i < numbersArr.length; i++) {}
   switch (operator) {
     case "+":
       total = +numbersArr[0] + +numbersArr[1];
