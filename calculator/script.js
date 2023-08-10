@@ -50,7 +50,6 @@ function pushToNumbersArr(number) {
 };
 
 function doOperation() {
-  const operators = ["+", "-", "*", "/"];
   pushToNumbersArr(display.textContent);
   let total;
   switch (operator) {
@@ -68,6 +67,7 @@ function doOperation() {
       break;
   }
   display.textContent = total;
+  numbersArr.length = 0;
 }
 
 // need to make it so numbers can be more than one digit,
