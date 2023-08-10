@@ -28,9 +28,13 @@ addEqualListener();
 let operator;
 const numbersArr = [];
 const display = document.body.querySelector(".display > span");
+let operatorClicked = false;
 
 function displayNumber(event) {
-  display.textContent = "";
+  if (display.textContent === "0" || operatorClicked) {
+    display.textContent = "";
+    operatorClicked = false;
+  }
   const displayValue = event.target.value;
   display.textContent += displayValue;
   numbersArr.push(displayValue);
@@ -38,10 +42,12 @@ function displayNumber(event) {
 
 function setOperator(event) {
   operator = event.target.value;
+  operatorClicked = true;
 }
 
 function doOperation() {
   let total;
+  for (let i = 0; i < numbersArr.length; i++) {}
   switch (operator) {
     case "+":
       total = +numbersArr[0] + +numbersArr[1];
@@ -58,3 +64,11 @@ function doOperation() {
   }
   display.textContent = total;
 }
+
+// need to make it so numbers can be more than one digit,
+// clear works,
+// 0 isn't there once a number is clicked,
+// decimals work,
+// multiple operations can be done,
+// once a symbol is clicked after two numbers are clicked they show the total, only if doesn't effect with pemdas,
+// make pemdas work, maybe
