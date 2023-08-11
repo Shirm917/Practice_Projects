@@ -6,13 +6,6 @@ function addNumberEvents() {
   }
 }
 
-addNumberEvents();
-
-// give class names of operator, number(decimal is a part of this), eqal sign, clear sign, etc.
-// keep color ones maybe since some things that aren't the same category have the same color
-// then change these query selectors
-// think what if they don't hit equal and just hit another operator
-
 function addOperatorListeners() {
   const operatorBtns = document.body.querySelectorAll(".operator");
   for (const btn of operatorBtns) {
@@ -20,14 +13,25 @@ function addOperatorListeners() {
   }
 }
 
-addOperatorListeners();
-
 function addEqualListener() {
   const equalSignBtn = document.body.querySelector(".equal-sign");
   equalSignBtn.addEventListener("click", doOperation);
 }
 
+function addClearListener() {
+    const clearBtn = document.body.querySelector(".clear");
+    clearBtn.addEventListener("click", clearCalculator);
+};
+
+addNumberEvents();
+addOperatorListeners();
 addEqualListener();
+addClearListener();
+
+// give class names of operator, number(decimal is a part of this), eqal sign, clear sign, etc.
+// keep color ones maybe since some things that aren't the same category have the same color
+// then change these query selectors
+// think what if they don't hit equal and just hit another operator
 
 let operator;
 const numbersArr = [];
@@ -72,11 +76,16 @@ function doOperation() {
   }
   display.textContent = total;
   emptyNumbersArr();
-}
+};
 
 function emptyNumbersArr() {
   numbersArr.length = 0;
-}
+};
+
+function clearCalculator() {
+    emptyNumbersArr();
+    display.textContent = 0;
+};
 
 // need to make it so numbers can be more than one digit,
 // clear works,
