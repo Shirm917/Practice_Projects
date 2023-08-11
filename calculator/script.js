@@ -43,16 +43,25 @@ function displayNumber(event) {
 }
 
 function setOperator(event) {
-  operator = event.target.value;
   operatorClicked = true;
-  pushToNumbersArr(display.textContent);
+  if (operator) {
+    console.log("test");
+    doOperation("setOperator");
+  } else {
+    pushToNumbersArr(display.textContent);
+  }
+  operator = event.target.value;
+}
+
+function clearOperator() {
+  operator = null;
 }
 
 function pushToNumbersArr(number) {
   numbersArr.push(number);
 }
 
-function doOperation() {
+function doOperation(functionTitle) {
   if (numbersArr.length < 1) return;
   pushToNumbersArr(display.textContent);
   let total;
@@ -70,8 +79,14 @@ function doOperation() {
       total = +numbersArr[0] / +numbersArr[1];
       break;
   }
+  console.log("before", numbersArr[0], numbersArr[1]);
   display.textContent = total;
   emptyNumbersArr();
+  if (functionTitle === "setOperator") {
+    pushToNumbersArr(total);
+  }
+  console.log("after", numbersArr[0], numbersArr[1]);
+  clearOperator();
 }
 
 function emptyNumbersArr() {
@@ -80,7 +95,6 @@ function emptyNumbersArr() {
 
 function clearCalculator() {
   emptyNumbersArr();
+  clearOperator();
   display.textContent = 0;
 }
-
-// think what if they don't hit equal and just hit another operator
