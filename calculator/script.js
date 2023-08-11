@@ -45,7 +45,6 @@ function displayNumber(event) {
 function setOperator(event) {
   operatorClicked = true;
   if (operator) {
-    console.log("test");
     doOperation("setOperator");
   } else {
     pushToNumbersArr(display.textContent);
@@ -79,13 +78,11 @@ function doOperation(functionTitle) {
       total = +numbersArr[0] / +numbersArr[1];
       break;
   }
-  console.log("before", numbersArr[0], numbersArr[1]);
   display.textContent = total;
   emptyNumbersArr();
   if (functionTitle === "setOperator") {
     pushToNumbersArr(total);
   }
-  console.log("after", numbersArr[0], numbersArr[1]);
   clearOperator();
 }
 
