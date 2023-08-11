@@ -19,19 +19,14 @@ function addEqualListener() {
 }
 
 function addClearListener() {
-    const clearBtn = document.body.querySelector(".clear");
-    clearBtn.addEventListener("click", clearCalculator);
-};
+  const clearBtn = document.body.querySelector(".clear");
+  clearBtn.addEventListener("click", clearCalculator);
+}
 
 addNumberEvents();
 addOperatorListeners();
 addEqualListener();
 addClearListener();
-
-// give class names of operator, number(decimal is a part of this), eqal sign, clear sign, etc.
-// keep color ones maybe since some things that aren't the same category have the same color
-// then change these query selectors
-// think what if they don't hit equal and just hit another operator
 
 let operator;
 const numbersArr = [];
@@ -58,6 +53,7 @@ function pushToNumbersArr(number) {
 }
 
 function doOperation() {
+  if (numbersArr.length < 1) return;
   pushToNumbersArr(display.textContent);
   let total;
   switch (operator) {
@@ -76,21 +72,15 @@ function doOperation() {
   }
   display.textContent = total;
   emptyNumbersArr();
-};
+}
 
 function emptyNumbersArr() {
   numbersArr.length = 0;
-};
+}
 
 function clearCalculator() {
-    emptyNumbersArr();
-    display.textContent = 0;
-};
+  emptyNumbersArr();
+  display.textContent = 0;
+}
 
-// need to make it so numbers can be more than one digit,
-// clear works,
-// 0 isn't there once a number is clicked,
-// decimals work,
-// multiple operations can be done,
-// once a symbol is clicked after two numbers are clicked they show the total, only if doesn't effect with pemdas,
-// make pemdas work, maybe
+// think what if they don't hit equal and just hit another operator
