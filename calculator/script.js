@@ -9,6 +9,11 @@ function addNumberEvents() {
 
 addNumberEvents();
 
+// give class names of operator, number(decimal is a part of this), eqal sign, clear sign, etc.
+// keep color ones maybe since some things that aren't the same category have the same color
+// then change these query selectors
+// think what if they don't hit equal and just hit another operator
+
 function addOperatorListeners() {
   const operatorBtns = document.body.querySelectorAll(".medium-gray-bg");
   for (const btn of operatorBtns) {
@@ -67,8 +72,12 @@ function doOperation() {
       break;
   }
   display.textContent = total;
+  emptyNumbersArr();
+};
+
+function emptyNumbersArr() {
   numbersArr.length = 0;
-}
+};
 
 // need to make it so numbers can be more than one digit,
 // clear works,
