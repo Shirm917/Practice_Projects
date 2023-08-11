@@ -1,7 +1,6 @@
 function addNumberEvents() {
-  const calculatorsDisplayBtns = document.body.querySelectorAll(
-    ".light-gray-bg:not(.clear)"
-  );
+  const calculatorsDisplayBtns =
+    document.body.querySelectorAll(".number,.decimal");
   for (const btn of calculatorsDisplayBtns) {
     btn.addEventListener("click", displayNumber);
   }
@@ -15,7 +14,7 @@ addNumberEvents();
 // think what if they don't hit equal and just hit another operator
 
 function addOperatorListeners() {
-  const operatorBtns = document.body.querySelectorAll(".medium-gray-bg");
+  const operatorBtns = document.body.querySelectorAll(".operator");
   for (const btn of operatorBtns) {
     btn.addEventListener("click", setOperator);
   }
@@ -48,11 +47,11 @@ function setOperator(event) {
   operator = event.target.value;
   operatorClicked = true;
   pushToNumbersArr(display.textContent);
-};
+}
 
 function pushToNumbersArr(number) {
-    numbersArr.push(number);
-};
+  numbersArr.push(number);
+}
 
 function doOperation() {
   pushToNumbersArr(display.textContent);
@@ -73,11 +72,11 @@ function doOperation() {
   }
   display.textContent = total;
   emptyNumbersArr();
-};
+}
 
 function emptyNumbersArr() {
   numbersArr.length = 0;
-};
+}
 
 // need to make it so numbers can be more than one digit,
 // clear works,
