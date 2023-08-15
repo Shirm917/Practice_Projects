@@ -30,7 +30,7 @@ button {
 }
 
 .equal-sign {
-  grid-row: 2 / 6;
+  grid-row: 2 / 5;
   grid-column: 4 / 5;
   background-color: rgb(230, 133, 49);
   height: 100%;
