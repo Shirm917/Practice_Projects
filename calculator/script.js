@@ -22,11 +22,16 @@ function addClearListener() {
   const clearBtn = document.body.querySelector(".clear");
   clearBtn.addEventListener("click", clearCalculator);
 }
+function addDeleteListener() {
+  const deleteBtn = document.body.querySelector(".delete");
+  deleteBtn.addEventListener("click", deleteInput);
+}
 
 addNumberEvents();
 addOperatorListeners();
 addEqualListener();
 addClearListener();
+addDeleteListener();
 
 let operator;
 const numbersArr = [];
@@ -94,4 +99,13 @@ function clearCalculator() {
   emptyNumbersArr();
   clearOperator();
   display.textContent = 0;
+}
+
+function deleteInput() {
+  const updatedTextContent = display.textContent.slice(0,-1);
+  if (updatedTextContent === "") {
+    display.textContent = "0";
+  } else {
+    display.textContent = updatedTextContent;
+  }
 }
