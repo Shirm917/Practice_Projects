@@ -1,37 +1,32 @@
-function addNumberEvents() {
+(() => {
   const calculatorsDisplayBtns =
     document.body.querySelectorAll(".number,.decimal");
   for (const btn of calculatorsDisplayBtns) {
     btn.addEventListener("click", displayNumber);
   }
-}
+})();
 
-function addOperatorListeners() {
+(() => {
   const operatorBtns = document.body.querySelectorAll(".operator");
   for (const btn of operatorBtns) {
     btn.addEventListener("click", setOperator);
   }
-}
+})();
 
-function addEqualListener() {
+(() => {
   const equalSignBtn = document.body.querySelector(".equal-sign");
   equalSignBtn.addEventListener("click", doOperation);
-}
+})();
 
-function addClearListener() {
+(() => {
   const clearBtn = document.body.querySelector(".clear");
   clearBtn.addEventListener("click", clearCalculator);
-}
-function addDeleteListener() {
+})();
+
+(() => {
   const deleteBtn = document.body.querySelector(".delete");
   deleteBtn.addEventListener("click", deleteInput);
-}
-
-addNumberEvents();
-addOperatorListeners();
-addEqualListener();
-addClearListener();
-addDeleteListener();
+})();
 
 let operator;
 const numbersArr = [];
