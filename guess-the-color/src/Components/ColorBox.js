@@ -1,8 +1,6 @@
-import { useState } from 'react';
-
-const ColorBox = ({hexCode}) => {
+const ColorBox = ({boxColor}) => {
     return (
-        <div className="color-box" style={{backgroundColor: hexCode}}></div>
+        <div className="color-box" style={{backgroundColor: boxColor}}></div>
      );
 }
 

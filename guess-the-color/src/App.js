@@ -1,22 +1,24 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import ColorBox from "./Components/ColorBox";
-import './App.css';
+import ColorOptions from "./Components/ColorOptions";
+import "./App.css";
 
 function App() {
-  const [hexCode, setHexCode] = useState(null);
+  const [boxColor, setBoxColor] = useState(null);
 
   useEffect(() => {
     let letters = "0123456789ABCDEF";
-    let newHexCode = "#";
+    let newBoxColor = "#";
     for (let i = 0; i < 6; i++) {
-      newHexCode += letters[Math.floor(Math.random() * 16)];
+      newBoxColor += letters[Math.floor(Math.random() * 16)];
     }
-    setHexCode(newHexCode);
+    setBoxColor(newBoxColor);
   }, []);
-  
+
   return (
     <section className="game-container">
-      <ColorBox hexCode={hexCode}/>
+      <ColorBox boxColor={boxColor} />
+      <ColorOptions boxColor={boxColor} />
     </section>
   );
 }
