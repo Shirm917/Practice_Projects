@@ -16,10 +16,12 @@ function App() {
   }, []);
 
   return (
-    <section className="game-container">
-      <ColorBox boxColor={boxColor} />
-      <ColorOptions boxColor={boxColor} />
-    </section>
+    boxColor && (
+      <section className="game-container">
+        <ColorBox boxColor={boxColor} />
+        <ColorOptions boxColor={boxColor} />
+      </section>
+    )
   );
 }
 

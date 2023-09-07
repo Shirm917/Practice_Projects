@@ -1,6 +1,6 @@
-const ColorButton = ({ColorHex}) => {
+const ColorButton = ({colorHex}) => {
     return (
-        <button className="color-button">{ColorHex}</button>
+        <button className="color-button">{colorHex}</button>
      );
 }
 
