@@ -1,17 +1,29 @@
 import { useState, useEffect } from "react";
 import ColorButton from "./ColorButton";
 
-const ColorOptions = ({ boxColor, clicks, setClicks, setMessage,randomArr }) => {
+const ColorOptions = ({
+  boxColor,
+  clicks,
+  setClicks,
+  setMessage,
+  randomArr,
+}) => {
   const [clickedColor, setClickedColor] = useState(null);
 
-  useEffect(() => {
-    if (clicks < 1) return;
+  const getResult = () => {
     if (clickedColor === boxColor) {
-      setMessage("CORRECT, Go Again!");
+      setMessage("CORRECT!");
+      setClicks(clicks + 1);
     } else {
-      setMessage("WRONG, Go Again!");
+      setMessage("WRONG, Try Again!");
     }
-  }, [clicks]);
+  };
+
+  useEffect(() => {
+    if (clickedColor) {
+      getResult();
+    }
+  }, [clickedColor]);
 
   return (
     <section>
@@ -21,8 +33,7 @@ const ColorOptions = ({ boxColor, clicks, setClicks, setMessage,randomArr }) => 
             key={color}
             colorHex={color}
             setClickedColor={setClickedColor}
-            clicks={clicks}
-            setClicks={setClicks}
+            getResult={getResult}
           />
         );
       })}
