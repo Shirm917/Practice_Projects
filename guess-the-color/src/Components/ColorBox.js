@@ -1,9 +1,8 @@
 import { useState } from 'react';
 
-const ColorBox = () => {
-    const [color, setColor] = useState("#C90F57");
+const ColorBox = ({hexCode}) => {
     return (
-        <div className="colorBox" style={{backgroundColor: color}}></div>
+        <div className="color-box" style={{backgroundColor: hexCode}}></div>
      );
 }
 

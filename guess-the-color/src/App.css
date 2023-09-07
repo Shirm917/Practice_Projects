@@ -1,11 +1,11 @@
-.gameContainer {
+.game-container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
 }
 
-.colorBox {
+.color-box {
   width: 300px;
   height: 200px;
 }
