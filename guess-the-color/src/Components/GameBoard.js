@@ -19,7 +19,7 @@ const GameBoard = () => {
     boxColor && (
       <section className="game-container">
         <ColorBox boxColor={boxColor} />
-        <ColorOptions boxColor={boxColor} />
+        <ColorOptions boxColor={boxColor} setMessage={setMessage}/>
         <p>{message}</p>
       </section>
     )
