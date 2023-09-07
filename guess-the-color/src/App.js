@@ -1,10 +1,10 @@
-import logo from './logo.svg';
+import ColorBox from "./Components/ColorBox";
 import './App.css';
 
 function App() {
   return (
-    <section>
-
+    <section className="gameContainer">
+      <ColorBox/>
     </section>
   );
 }
