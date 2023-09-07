@@ -4,7 +4,6 @@ const ColorOptions = ({ boxColor }) => {
   const [randomArr, setRandomArr] = useState([]);
 
   useEffect(() => {
-    // console.log(boxColor);
     let hexesArr = [generateRandomColor(), generateRandomColor(), boxColor];
     console.log(hexesArr[2]);
     let randomizedArr = [];
@@ -13,7 +12,6 @@ const ColorOptions = ({ boxColor }) => {
         randomizedArr.push(hexesArr[randomIndex]);
         hexesArr.splice(randomIndex, 1);
     }
-    // console.log(randomArr);
     setRandomArr(randomizedArr);
   }, []);
 
@@ -29,7 +27,6 @@ const ColorOptions = ({ boxColor }) => {
   return (
     <section>
       {randomArr.map((color) => {
-        // console.log(color);
         return <ColorButton key={color} colorHex={color} />;
       })}
     </section>
