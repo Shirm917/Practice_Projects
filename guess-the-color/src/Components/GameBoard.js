@@ -8,11 +8,6 @@ const GameBoard = () => {
   const [clicks, setClicks] = useState(0);
   const [message, setMessage] = useState("Choose the correct color!");
 
-  useEffect(() => {
-    const newBoxColor = generateRandomColor();
-    setBoxColor(newBoxColor);
-  }, [clicks]);
-
   const generateRandomColor = () => {
     let letters = "0123456789ABCDEF";
     let randomColor = "#";
@@ -23,21 +18,15 @@ const GameBoard = () => {
   };
 
   useEffect(() => {
-    if (boxColor) {
-      randomizeArray();
-    }
-  }, [boxColor]);
+    const newBoxColor = generateRandomColor();
+    setBoxColor(newBoxColor);
+    randomizeArr(newBoxColor)
+  }, [clicks]);
 
-  const randomizeArray = () => {
-    let hexesArr = [generateRandomColor(), generateRandomColor(), boxColor];
-    let randomizedArr = [];
-    for (let i = 0; i < 3; i++) {
-      let randomIndex = Math.floor(Math.random() * hexesArr.length);
-      randomizedArr.push(hexesArr[randomIndex]);
-      hexesArr.splice(randomIndex, 1);
-    }
-    setRandomArr(randomizedArr);
-  };
+  const randomizeArr = (newBoxColor) => {
+    let hexesArr = [generateRandomColor(), generateRandomColor(), newBoxColor];
+    setRandomArr(hexesArr.sort(() => Math.random() - 0.5));
+  }
 
   return (
     randomArr && (
