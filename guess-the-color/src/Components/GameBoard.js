@@ -9,12 +9,7 @@ const GameBoard = () => {
   const [message, setMessage] = useState("Choose the correct color!");
 
   useEffect(() => {
-    let letters = "0123456789ABCDEF";
-    let newBoxColor = "#";
-    for (let i = 0; i < 6; i++) {
-      newBoxColor += letters[Math.floor(Math.random() * 16)];
-    }
-    console.log(newBoxColor);
+    const newBoxColor = generateRandomColor();
     setBoxColor(newBoxColor);
   }, [clicks]);
 
