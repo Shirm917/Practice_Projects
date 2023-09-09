@@ -28,10 +28,18 @@ const GameBoard = () => {
     setRandomArr(hexesArr.sort(() => Math.random() - 0.5));
   }
 
+  const restart = () => {
+    setScore(0);
+    setMessage("Choose the correct color!");
+  }
+
   return (
     randomArr && (
       <section className="game-container">
-        <p>Score: {score}</p>
+        <div className="inner-game-container">
+            <button onClick={restart}>Restart</button>
+            <p>Score: {score}</p>
+        </div>
         <ColorBox boxColor={boxColor} />
         <ColorOptions
           boxColor={boxColor}
