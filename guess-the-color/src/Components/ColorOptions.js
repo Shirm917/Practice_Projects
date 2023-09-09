@@ -3,17 +3,16 @@ import ColorButton from "./ColorButton";
 
 const ColorOptions = ({
   boxColor,
-  clicks,
-  setClicks,
   setMessage,
   randomArr,
+  setScore
 }) => {
   const [clickedColor, setClickedColor] = useState(null);
 
   const getResult = () => {
     if (clickedColor === boxColor) {
       setMessage("CORRECT!");
-      setClicks(clicks + 1);
+      setScore((score) => score + 1);
     } else {
       setMessage("WRONG, Try Again!");
     }
@@ -33,7 +32,6 @@ const ColorOptions = ({
             key={color}
             colorHex={color}
             setClickedColor={setClickedColor}
-            getResult={getResult}
           />
         );
       })}

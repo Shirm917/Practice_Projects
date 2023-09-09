@@ -5,8 +5,8 @@ import ColorOptions from "./ColorOptions";
 const GameBoard = () => {
   const [boxColor, setBoxColor] = useState(null);
   const [randomArr, setRandomArr] = useState([]);
-  const [clicks, setClicks] = useState(0);
   const [message, setMessage] = useState("Choose the correct color!");
+  const [score, setScore] = useState(0);
 
   const generateRandomColor = () => {
     let letters = "0123456789ABCDEF";
@@ -21,7 +21,7 @@ const GameBoard = () => {
     const newBoxColor = generateRandomColor();
     setBoxColor(newBoxColor);
     randomizeArr(newBoxColor)
-  }, [clicks]);
+  }, [score]);
 
   const randomizeArr = (newBoxColor) => {
     let hexesArr = [generateRandomColor(), generateRandomColor(), newBoxColor];
@@ -31,13 +31,14 @@ const GameBoard = () => {
   return (
     randomArr && (
       <section className="game-container">
+        <p>Score: {score}</p>
         <ColorBox boxColor={boxColor} />
         <ColorOptions
           boxColor={boxColor}
-          clicks={clicks}
-          setClicks={setClicks}
           setMessage={setMessage}
           randomArr={randomArr}
+          score={score}
+          setScore={setScore}
         />
         <p>{message}</p>
       </section>
