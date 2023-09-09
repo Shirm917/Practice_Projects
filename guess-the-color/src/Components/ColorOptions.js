@@ -5,7 +5,7 @@ const ColorOptions = ({
   boxColor,
   setMessage,
   randomArr,
-  setScore
+  setScore,
 }) => {
   const [clickedColor, setClickedColor] = useState(null);
 

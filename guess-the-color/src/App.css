@@ -6,14 +6,14 @@
   height: 100vh;
 }
 
-.inner-game-container {
+.game-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 300px;
 }
 
-.inner-game-container button {
+.game-header button {
   height: 20px;
 }
 

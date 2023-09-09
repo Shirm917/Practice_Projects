@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import ColorBox from "./ColorBox";
 import ColorOptions from "./ColorOptions";
+import GameHeader from "./GameHeader";
+import Message from "./Message";
 
 const GameBoard = () => {
   const [boxColor, setBoxColor] = useState(null);
   const [randomArr, setRandomArr] = useState([]);
   const [message, setMessage] = useState("Choose the correct color!");
   const [score, setScore] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
 
   const generateRandomColor = () => {
     let letters = "0123456789ABCDEF";
@@ -20,26 +23,24 @@ const GameBoard = () => {
   useEffect(() => {
     const newBoxColor = generateRandomColor();
     setBoxColor(newBoxColor);
-    randomizeArr(newBoxColor)
+    randomizeArr(newBoxColor);
   }, [score]);
 
   const randomizeArr = (newBoxColor) => {
     let hexesArr = [generateRandomColor(), generateRandomColor(), newBoxColor];
     setRandomArr(hexesArr.sort(() => Math.random() - 0.5));
-  }
+  };
 
   const restart = () => {
     setScore(0);
     setMessage("Choose the correct color!");
-  }
+  };
 
   return (
     randomArr && (
-      <section className="game-container">
-        <div className="inner-game-container">
-            <button onClick={restart}>Restart</button>
-            <p>Score: {score}</p>
-        </div>
+      <main className="game-container">
+        <h1>Guess The Color</h1>
+        <GameHeader restart={restart} score={score} />
         <ColorBox boxColor={boxColor} />
         <ColorOptions
           boxColor={boxColor}
@@ -48,8 +49,8 @@ const GameBoard = () => {
           score={score}
           setScore={setScore}
         />
-        <p>{message}</p>
-      </section>
+        <Message message={message}/>
+      </main>
     )
   );
 };
