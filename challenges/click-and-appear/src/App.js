@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <UndoButton circles={circles} setCircles={setCircles} undoCircles={undoCircles} setUndoCircles={setUndoCircles} />
-      <RedoButton circles={circles} setCircles={setCircles} />
+      <RedoButton circles={circles} setCircles={setCircles} undoCircles={undoCircles} setUndoCircles={setUndoCircles} />
       <div className="container" onClick={handleOnClick}>
         {circles.map((circle, index) => {
           return <Circle key={index} x={circle.x} y={circle.y} />;
