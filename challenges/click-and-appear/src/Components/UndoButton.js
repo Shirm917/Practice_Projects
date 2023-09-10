@@ -6,7 +6,7 @@ const UndoButton = ({ circles, setCircles, undoCircles, setUndoCircles }) => {
     setCircles(newCircles);
     setUndoCircles([...undoCircles, undoCircle]);
   };
-  return <Button title="Undo" onClick={handleUndo} />;
+  return <Button title="Undo" onClick={handleUndo} disabled={circles.length === 0} />;
 };
 
 export default UndoButton;

@@ -8,7 +8,7 @@ const RedoButton = ({ circles, setCircles, undoCircles, setUndoCircles }) => {
     setCircles([...circles, lastUndoCircle]);
   };
 
-  return <Button title="Redo" onClick={handleRedo} />;
+  return <Button title="Redo" onClick={handleRedo} disabled={undoCircles.length === 0} />;
 };
 
 export default RedoButton;
