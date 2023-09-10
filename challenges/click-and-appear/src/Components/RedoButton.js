@@ -2,10 +2,10 @@ import Button from "./Button";
 const RedoButton = ({ circles, setCircles, undoCircles, setUndoCircles }) => {
   const handleRedo = () => {
     const newUndoCircles = [...undoCircles];
-    const newCircles = [...circles];
     const lastUndoCircle = newUndoCircles.pop();
+    if (!lastUndoCircle) return;
     setUndoCircles(newUndoCircles);
-    setCircles([...newCircles, lastUndoCircle]);
+    setCircles([...circles, lastUndoCircle]);
   };
 
   return <Button title="Redo" onClick={handleRedo} />;
