@@ -1,6 +1,11 @@
+.container {
+  height: 100vh;
+}
+
 .circle {
   width: 15px;
   height: 15px;
   border-radius: 50%;
   background: #f00;
+  position: absolute;
 }
