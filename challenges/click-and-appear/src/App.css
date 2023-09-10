@@ -1,11 +1,18 @@
 .container {
   height: 100vh;
+  z-index: -1;
 }
 
 .circle {
+  position: absolute;
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: #f00;
-  position: absolute;
+  background: rgb(17, 0, 255);
+}
+
+button {
+  width: 50px;
+  height: 30px;
+  margin: 10px;
 }
