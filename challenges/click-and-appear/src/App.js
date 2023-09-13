@@ -2,6 +2,7 @@ import { useState } from "react";
 import Circle from "./Components/Circle";
 import UndoButton from "./Components/UndoButton";
 import RedoButton from "./Components/RedoButton";
+import ColorPicker from "./Components/ColorPicker";
 import "./App.css";
 
 function App() {
@@ -12,15 +13,18 @@ function App() {
     setCircles([...circles, { x: event.clientX, y: event.clientY }]);
   };
   return (
-    <>
-      <UndoButton circles={circles} setCircles={setCircles} undoCircles={undoCircles} setUndoCircles={setUndoCircles} />
-      <RedoButton circles={circles} setCircles={setCircles} undoCircles={undoCircles} setUndoCircles={setUndoCircles} />
-      <div className="container" onClick={handleOnClick}>
+    <main>
+      <section className="input-container">
+        <ColorPicker />
+        <UndoButton circles={circles} setCircles={setCircles} undoCircles={undoCircles} setUndoCircles={setUndoCircles} />
+        <RedoButton circles={circles} setCircles={setCircles} undoCircles={undoCircles} setUndoCircles={setUndoCircles} />
+      </section>
+      <section className="circle-container" onClick={handleOnClick}>
         {circles.map((circle, index) => {
           return <Circle key={index} x={circle.x} y={circle.y} />;
         })}
-      </div>
-    </>
+      </section>
+    </main>
   );
 }
 
