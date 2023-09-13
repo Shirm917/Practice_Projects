@@ -1,6 +1,12 @@
-.container {
+.input-container {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-container {
   height: 100vh;
-  z-index: -1;
 }
 
 .circle {
@@ -11,7 +17,8 @@
   background: rgb(17, 0, 255);
 }
 
-button {
+button,
+.color-picker {
   width: 50px;
   height: 30px;
   margin: 10px;
