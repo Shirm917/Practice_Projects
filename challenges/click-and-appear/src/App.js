@@ -8,20 +8,31 @@ import "./App.css";
 function App() {
   const [circles, setCircles] = useState([]);
   const [undoCircles, setUndoCircles] = useState([]);
+  const [color, setColor] = useState("#1100ff");
 
   const handleOnClick = (event) => {
-    setCircles([...circles, { x: event.clientX, y: event.clientY }]);
+    setCircles([...circles, { x: event.clientX, y: event.clientY, color }]);
   };
   return (
     <main>
       <section className="input-container">
-        <ColorPicker />
-        <UndoButton circles={circles} setCircles={setCircles} undoCircles={undoCircles} setUndoCircles={setUndoCircles} />
-        <RedoButton circles={circles} setCircles={setCircles} undoCircles={undoCircles} setUndoCircles={setUndoCircles} />
+        <ColorPicker color={color} setColor={setColor} />
+        <UndoButton
+          circles={circles}
+          setCircles={setCircles}
+          undoCircles={undoCircles}
+          setUndoCircles={setUndoCircles}
+        />
+        <RedoButton
+          circles={circles}
+          setCircles={setCircles}
+          undoCircles={undoCircles}
+          setUndoCircles={setUndoCircles}
+        />
       </section>
       <section className="circle-container" onClick={handleOnClick}>
         {circles.map((circle, index) => {
-          return <Circle key={index} x={circle.x} y={circle.y} />;
+          return <Circle key={index} x={circle.x} y={circle.y} color={circle.color}/>;
         })}
       </section>
     </main>
