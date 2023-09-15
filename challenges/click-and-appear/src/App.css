@@ -11,8 +11,6 @@
 
 .circle {
   position: absolute;
-  width: 15px;
-  height: 15px;
   border-radius: 50%;
 }
 
