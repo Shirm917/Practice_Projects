@@ -3,6 +3,7 @@ import Circle from "./Components/Circle";
 import UndoButton from "./Components/UndoButton";
 import RedoButton from "./Components/RedoButton";
 import ColorPicker from "./Components/ColorPicker";
+import SizePicker from "./Components/SizePicker";
 import "./App.css";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           undoCircles={undoCircles}
           setUndoCircles={setUndoCircles}
         />
+        <SizePicker/>
       </section>
       <section className="circle-container" onClick={handleOnClick}>
         {circles.map((circle, index) => {
