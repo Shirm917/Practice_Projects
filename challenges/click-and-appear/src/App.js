@@ -10,7 +10,7 @@ function App() {
   const [circles, setCircles] = useState([]);
   const [undoCircles, setUndoCircles] = useState([]);
   const [color, setColor] = useState("#1100ff");
-  const [size, setSize] = useState(15);
+  const [size, setSize] = useState(30);
 
   const handleOnClick = (event) => {
     setCircles([...circles, { x: event.clientX, y: event.clientY, color, size }]);
