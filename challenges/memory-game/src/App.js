@@ -1,9 +1,11 @@
+import GameBoard from './Components/GameBoard';
 import './App.css';
 
 function App() {
   return (
-    <div>
-    </div>
+    <main>
+      <GameBoard />
+    </main>
   );
 }
 

@@ -1,6 +1,6 @@
-const Card = () => {
+const Card = ({color}) => {
     return (
-        <div className="card"></div>
+        <div className="card" style={{background: color}}></div>
      );
 }
 
