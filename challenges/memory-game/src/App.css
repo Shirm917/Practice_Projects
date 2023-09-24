@@ -1,3 +1,9 @@
+.game-board {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .card {
   width: 100px;
   height: 200px;
