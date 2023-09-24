@@ -1,10 +1,31 @@
-.game-board {
+.game-container {
   height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-board {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
-  width: 100px;
-  height: 200px;
+  position: relative;
+  margin: 5px;
+}
+
+.card-front,
+.card-back {
+  width: 60px;
+  height: 120px;
+}
+
+.card-back {
+  position: absolute;
+  background-color: black;
+  color: white;
 }

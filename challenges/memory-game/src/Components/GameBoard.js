@@ -26,6 +26,7 @@ const GameBoard = () => {
   ]);
   const [firstCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState(null);
+  const [turnDone, setTurnDone] = useState(false);
 
   const shuffleColors = () => {
     let shuffledColors = [...colors];
@@ -57,8 +58,13 @@ const GameBoard = () => {
   useEffect(() => {
     if (secondCard) {
       if (firstCard === secondCard) {
-        setColors(prevColors => prevColors.filter(color => color !== firstCard))
+        setTimeout(() => {
+          setColors((prevColors) =>
+            prevColors.filter((color) => color !== firstCard)
+          );
+        }, 400);
       }
+      setTurnDone(true);
       setFirstCard(null);
       setSecondCard(null);
     }
@@ -67,7 +73,15 @@ const GameBoard = () => {
   return (
     <section className="game-board">
       {colors.map((color, i) => {
-        return <Card key={i} color={color} handleClick={handleClick} />;
+        return (
+          <Card
+            key={`${color}-${i}`}
+            color={color}
+            handleClick={handleClick}
+            turnDone={turnDone}
+            setTurnDone={setTurnDone}
+          />
+        );
       })}
     </section>
   );

@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
   return (
-    <main>
+    <main className="game-container">
       <GameBoard />
     </main>
   );
