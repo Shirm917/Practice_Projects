@@ -27,29 +27,42 @@ const GameBoard = () => {
   const [firstCard, setFirstCard] = useState(null);
   const [secondCard, setSecondCard] = useState(null);
 
-  const shuffle = (array) => {
-    let currentIndex = array.length;
+  const shuffleColors = () => {
+    let shuffledColors = [...colors];
+    let currentIndex = shuffledColors.length;
     let randomIndex;
     while (currentIndex !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
+      [shuffledColors[currentIndex], shuffledColors[randomIndex]] = [
+        shuffledColors[randomIndex],
+        shuffledColors[currentIndex],
       ];
     }
+    setColors(shuffledColors);
   };
+
   useEffect(() => {
-    shuffle(colors);
+    shuffleColors();
   }, []);
 
   const handleClick = (color) => {
     if (!firstCard) {
-        setFirstCard(color);
+      setFirstCard(color);
     } else if (firstCard && !secondCard) {
-        setSecondCard(color);
+      setSecondCard(color);
     }
   };
+
+  useEffect(() => {
+    if (secondCard) {
+      if (firstCard === secondCard) {
+        setColors(prevColors => prevColors.filter(color => color !== firstCard))
+      }
+      setFirstCard(null);
+      setSecondCard(null);
+    }
+  }, [secondCard]);
 
   return (
     <section className="game-board">
