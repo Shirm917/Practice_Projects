@@ -24,6 +24,9 @@ const GameBoard = () => {
     "#ff4500",
     "#ff0080",
   ]);
+  const [firstCard, setFirstCard] = useState(null);
+  const [secondCard, setSecondCard] = useState(null);
+
   const shuffle = (array) => {
     let currentIndex = array.length;
     let randomIndex;
@@ -39,11 +42,19 @@ const GameBoard = () => {
   useEffect(() => {
     shuffle(colors);
   }, []);
-  
+
+  const handleClick = (color) => {
+    if (!firstCard) {
+        setFirstCard(color);
+    } else if (firstCard && !secondCard) {
+        setSecondCard(color);
+    }
+  };
+
   return (
     <section className="game-board">
       {colors.map((color, i) => {
-        return <Card key={i} color={color} />;
+        return <Card key={i} color={color} handleClick={handleClick} />;
       })}
     </section>
   );

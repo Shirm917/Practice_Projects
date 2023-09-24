@@ -1,6 +1,6 @@
-const Card = ({color}) => {
+const Card = ({color,handleClick}) => {
     return (
-        <div className="card" style={{background: color}}></div>
+        <div className="card" style={{background: color}} onClick={() => handleClick(color)}></div>
      );
 }
 
