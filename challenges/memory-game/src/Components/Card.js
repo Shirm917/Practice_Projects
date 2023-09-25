@@ -7,8 +7,10 @@ const Card = ({
   setTurnDone,
   isCorrectMatch,
   setIsCorrectMatch,
+  matchedColor,
 }) => {
   const [backFaceVisibility, setBackFaceVisibility] = useState("visible");
+  const [fullCardVisibility, setFullCardVisibility] = useState("visible");
 
   const handleTurn = () => {
     if (turnDone) return;
@@ -17,21 +19,33 @@ const Card = ({
   };
 
   useEffect(() => {
-    if (turnDone && !isCorrectMatch) {
+    if (turnDone) {
+      if (!isCorrectMatch && matchedColor !== color) {
+        setTimeout(() => {
+          setBackFaceVisibility("visible");
+        }, 1000);
+      } else if (isCorrectMatch && matchedColor === color) {
+        setTimeout(() => {
+          setFullCardVisibility("hidden");
+        }, 1000);
+      }
       setTimeout(() => {
-        setBackFaceVisibility("visible");
         setTurnDone(false);
       }, 1000);
+      setIsCorrectMatch(false);
     }
-    setIsCorrectMatch(false);
   }, [turnDone]);
 
   return (
     <section
       className="card"
       onClick={handleTurn}
+      style={{ visibility: fullCardVisibility }}
     >
-      <div className="card-back" style={{visibility: backFaceVisibility}}></div>
+      <div
+        className="card-back"
+        style={{ visibility: backFaceVisibility, color: "white" }}
+      ></div>
       <div className="card-front" style={{ background: color }}></div>
     </section>
   );

@@ -28,6 +28,7 @@ const GameBoard = () => {
   const [secondCard, setSecondCard] = useState(null);
   const [turnDone, setTurnDone] = useState(false);
   const [isCorrectMatch, setIsCorrectMatch] = useState(false);
+  const [matchedColor, setMatchedColor] = useState(null);
 
   const shuffleColors = () => {
     let shuffledColors = [...colors];
@@ -59,12 +60,9 @@ const GameBoard = () => {
   useEffect(() => {
     if (secondCard) {
       if (firstCard === secondCard) {
+        console.log("match");
         setIsCorrectMatch(true);
-        // setTimeout(() => {
-        //   setColors((prevColors) =>
-        //     prevColors.filter((color) => color !== firstCard)
-        //   );
-        // }, 400);
+        setMatchedColor(firstCard);
       }
       setTurnDone(true);
       setFirstCard(null);
@@ -84,6 +82,7 @@ const GameBoard = () => {
             setTurnDone={setTurnDone}
             isCorrectMatch={isCorrectMatch}
             setIsCorrectMatch={setIsCorrectMatch}
+            matchedColor={matchedColor}
           />
         );
       })}
