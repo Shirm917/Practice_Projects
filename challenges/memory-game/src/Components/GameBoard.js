@@ -72,6 +72,14 @@ const GameBoard = () => {
     }
   }, [secondCard]);
 
+  useEffect(() => {
+    if (startNewGame) {
+      setMatchedColor(null);
+      setFirstCard(null);
+      setSecondCard(null);
+    }
+  }, [startNewGame]);
+
   return (
     <section className="game-board">
       <NewGameBtn
