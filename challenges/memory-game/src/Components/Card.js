@@ -8,6 +8,8 @@ const Card = ({
   isCorrectMatch,
   setIsCorrectMatch,
   matchedColor,
+  startNewGame,
+  setStartNewGame,
 }) => {
   const [backFaceVisibility, setBackFaceVisibility] = useState("visible");
   const [fullCardVisibility, setFullCardVisibility] = useState("visible");
@@ -35,6 +37,14 @@ const Card = ({
       setIsCorrectMatch(false);
     }
   }, [turnDone]);
+
+  useEffect(() => {
+    if (startNewGame) {
+      setBackFaceVisibility("visible");
+      setFullCardVisibility("visible");
+      setStartNewGame(false);
+    }
+  }, [startNewGame]);
 
   return (
     <section

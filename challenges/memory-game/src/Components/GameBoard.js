@@ -30,6 +30,7 @@ const GameBoard = () => {
   const [turnDone, setTurnDone] = useState(false);
   const [isCorrectMatch, setIsCorrectMatch] = useState(false);
   const [matchedColor, setMatchedColor] = useState(null);
+  const [startNewGame, setStartNewGame] = useState(false);
 
   const shuffleColors = () => {
     let shuffledColors = [...colors];
@@ -73,7 +74,10 @@ const GameBoard = () => {
 
   return (
     <section className="game-board">
-      <NewGameBtn />
+      <NewGameBtn
+        shuffleColors={shuffleColors}
+        setStartNewGame={setStartNewGame}
+      />
       {colors.map((color, i) => {
         return (
           <Card
@@ -85,6 +89,8 @@ const GameBoard = () => {
             isCorrectMatch={isCorrectMatch}
             setIsCorrectMatch={setIsCorrectMatch}
             matchedColor={matchedColor}
+            startNewGame={startNewGame}
+            setStartNewGame={setStartNewGame}
           />
         );
       })}
