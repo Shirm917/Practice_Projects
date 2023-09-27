@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import NewGameBtn from "./NewGameBtn";
 import Card from "./Card";
 
 const GameBoard = () => {
@@ -72,6 +73,7 @@ const GameBoard = () => {
 
   return (
     <section className="game-board">
+      <NewGameBtn />
       {colors.map((color, i) => {
         return (
           <Card

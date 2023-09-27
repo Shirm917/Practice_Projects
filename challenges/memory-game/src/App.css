@@ -12,6 +12,12 @@
   gap: 4px;
 }
 
+.new-game-btn {
+  grid-column: 1 / 5;
+  justify-self: center;
+  margin-bottom: 20px;
+}
+
 .card {
   position: relative;
   cursor: pointer;
