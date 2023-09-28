@@ -23,7 +23,6 @@ const Card = ({
   };
 
   useEffect(() => {
-    console.log(color, firstCard, secondCard);
     if (turnDone && (color === firstCard || color === secondCard)) {
       if (!isCorrectMatch && matchedColor !== color) {
         setTimeout(() => {

@@ -31,6 +31,7 @@ const GameBoard = () => {
   const [isCorrectMatch, setIsCorrectMatch] = useState(false);
   const [matchedColor, setMatchedColor] = useState(null);
   const [startNewGame, setStartNewGame] = useState(false);
+  const [matches,setMatches] = useState(0);
 
   const shuffleColors = () => {
     let shuffledColors = [...colors];
@@ -64,6 +65,7 @@ const GameBoard = () => {
       if (firstCard === secondCard) {
         setIsCorrectMatch(true);
         setMatchedColor(firstCard);
+        setMatches(matches+1);
       }
       setTurnDone(true);
     }
@@ -81,6 +83,15 @@ const GameBoard = () => {
     setSecondCard(null);
     setIsCorrectMatch(false);
   };
+
+  useEffect(() => {
+    if (matches === 10) {
+        alert("You won!");
+        setMatches(0);
+        shuffleColors();
+        setStartNewGame(true);
+    }
+  }, [matches]);
 
   return (
     <section className="game-board">
