@@ -6,10 +6,12 @@ const Card = ({
   turnDone,
   setTurnDone,
   isCorrectMatch,
-  setIsCorrectMatch,
   matchedColor,
   startNewGame,
   setStartNewGame,
+  firstCard,
+  secondCard,
+  resetValues,
 }) => {
   const [backFaceVisibility, setBackFaceVisibility] = useState("visible");
   const [fullCardVisibility, setFullCardVisibility] = useState("visible");
@@ -21,7 +23,8 @@ const Card = ({
   };
 
   useEffect(() => {
-    if (turnDone) {
+    console.log(color, firstCard, secondCard);
+    if (turnDone && (color === firstCard || color === secondCard)) {
       if (!isCorrectMatch && matchedColor !== color) {
         setTimeout(() => {
           setBackFaceVisibility("visible");
@@ -34,7 +37,7 @@ const Card = ({
       setTimeout(() => {
         setTurnDone(false);
       }, 1000);
-      setIsCorrectMatch(false);
+      resetValues();
     }
   }, [turnDone]);
 

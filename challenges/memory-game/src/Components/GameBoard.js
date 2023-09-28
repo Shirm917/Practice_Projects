@@ -62,23 +62,25 @@ const GameBoard = () => {
   useEffect(() => {
     if (secondCard) {
       if (firstCard === secondCard) {
-        console.log("match");
         setIsCorrectMatch(true);
         setMatchedColor(firstCard);
       }
       setTurnDone(true);
-      setFirstCard(null);
-      setSecondCard(null);
     }
   }, [secondCard]);
 
   useEffect(() => {
     if (startNewGame) {
-      setMatchedColor(null);
-      setFirstCard(null);
-      setSecondCard(null);
+      resetValues();
     }
   }, [startNewGame]);
+
+  const resetValues = () => {
+    setMatchedColor(null);
+    setFirstCard(null);
+    setSecondCard(null);
+    setIsCorrectMatch(false);
+  };
 
   return (
     <section className="game-board">
@@ -95,10 +97,12 @@ const GameBoard = () => {
             turnDone={turnDone}
             setTurnDone={setTurnDone}
             isCorrectMatch={isCorrectMatch}
-            setIsCorrectMatch={setIsCorrectMatch}
             matchedColor={matchedColor}
             startNewGame={startNewGame}
             setStartNewGame={setStartNewGame}
+            firstCard={firstCard}
+            secondCard={secondCard}
+            resetValues={resetValues}
           />
         );
       })}
