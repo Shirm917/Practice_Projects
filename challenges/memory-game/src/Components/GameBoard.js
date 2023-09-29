@@ -75,6 +75,7 @@ const GameBoard = () => {
   useEffect(() => {
     if (startNewGame) {
       resetValues();
+      setMatches(0);
     }
   }, [startNewGame]);
 
@@ -88,7 +89,6 @@ const GameBoard = () => {
   useEffect(() => {
     if (matches === 10) {
       alert("You won!");
-      setMatches(0);
       shuffleColors();
       setStartNewGame(true);
     }
