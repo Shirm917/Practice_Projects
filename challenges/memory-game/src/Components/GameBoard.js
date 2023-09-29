@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import NewGameBtn from "./NewGameBtn";
+import Points from "./Points";
 import Card from "./Card";
 
 const GameBoard = () => {
@@ -31,7 +32,7 @@ const GameBoard = () => {
   const [isCorrectMatch, setIsCorrectMatch] = useState(false);
   const [matchedColor, setMatchedColor] = useState(null);
   const [startNewGame, setStartNewGame] = useState(false);
-  const [matches,setMatches] = useState(0);
+  const [matches, setMatches] = useState(0);
 
   const shuffleColors = () => {
     let shuffledColors = [...colors];
@@ -65,7 +66,7 @@ const GameBoard = () => {
       if (firstCard === secondCard) {
         setIsCorrectMatch(true);
         setMatchedColor(firstCard);
-        setMatches(matches+1);
+        setMatches(matches + 1);
       }
       setTurnDone(true);
     }
@@ -86,19 +87,22 @@ const GameBoard = () => {
 
   useEffect(() => {
     if (matches === 10) {
-        alert("You won!");
-        setMatches(0);
-        shuffleColors();
-        setStartNewGame(true);
+      alert("You won!");
+      setMatches(0);
+      shuffleColors();
+      setStartNewGame(true);
     }
   }, [matches]);
 
   return (
     <section className="game-board">
-      <NewGameBtn
-        shuffleColors={shuffleColors}
-        setStartNewGame={setStartNewGame}
-      />
+      <div className="game-pieces">
+        <NewGameBtn
+          shuffleColors={shuffleColors}
+          setStartNewGame={setStartNewGame}
+        />
+        <Points matches={matches} />
+      </div>
       {colors.map((color, i) => {
         return (
           <Card
