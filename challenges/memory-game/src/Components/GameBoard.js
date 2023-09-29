@@ -11,7 +11,7 @@ const GameBoard = () => {
     "#ff7f00",
     "#ff0000",
     "#ffe474",
-    "#00ff80",
+    "#000f80",
     "#c0dcc0",
     "#ff4500",
     "#ff0080",
@@ -21,7 +21,7 @@ const GameBoard = () => {
     "#ff7f00",
     "#ff0000",
     "#ffe474",
-    "#00ff80",
+    "#000f80",
     "#c0dcc0",
     "#ff4500",
     "#ff0080",
@@ -76,6 +76,7 @@ const GameBoard = () => {
     if (startNewGame) {
       resetValues();
       setMatches(0);
+      shuffleColors();
     }
   }, [startNewGame]);
 
@@ -89,7 +90,6 @@ const GameBoard = () => {
   useEffect(() => {
     if (matches === 10) {
       alert("You won!");
-      shuffleColors();
       setStartNewGame(true);
     }
   }, [matches]);
@@ -98,7 +98,6 @@ const GameBoard = () => {
     <section className="game-board">
       <div className="game-pieces">
         <NewGameBtn
-          shuffleColors={shuffleColors}
           setStartNewGame={setStartNewGame}
         />
         <Points matches={matches} />

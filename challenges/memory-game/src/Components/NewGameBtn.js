@@ -1,7 +1,6 @@
-const NewGameBtn = ({shuffleColors,setStartNewGame}) => {
+const NewGameBtn = ({setStartNewGame}) => {
 
     const handleClick = () => {
-        shuffleColors();
         setStartNewGame(true);
     }
     return (
