@@ -12,9 +12,11 @@
   gap: 4px;
 }
 
-.new-game-btn {
+.game-pieces {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   grid-column: 1 / 5;
-  justify-self: center;
   margin-bottom: 20px;
 }
 
