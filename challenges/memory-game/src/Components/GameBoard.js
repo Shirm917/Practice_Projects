@@ -30,7 +30,6 @@ const GameBoard = () => {
   const [secondCard, setSecondCard] = useState(null);
   const [turnDone, setTurnDone] = useState(false);
   const [isCorrectMatch, setIsCorrectMatch] = useState(false);
-  const [matchedColor, setMatchedColor] = useState(null);
   const [startNewGame, setStartNewGame] = useState(false);
   const [matches, setMatches] = useState(0);
 
@@ -65,7 +64,6 @@ const GameBoard = () => {
     if (secondCard) {
       if (firstCard === secondCard) {
         setIsCorrectMatch(true);
-        setMatchedColor(firstCard);
         setMatches(matches + 1);
       }
       setTurnDone(true);
@@ -81,7 +79,6 @@ const GameBoard = () => {
   }, [startNewGame]);
 
   const resetValues = () => {
-    setMatchedColor(null);
     setFirstCard(null);
     setSecondCard(null);
     setIsCorrectMatch(false);
@@ -111,7 +108,6 @@ const GameBoard = () => {
             turnDone={turnDone}
             setTurnDone={setTurnDone}
             isCorrectMatch={isCorrectMatch}
-            matchedColor={matchedColor}
             startNewGame={startNewGame}
             setStartNewGame={setStartNewGame}
             firstCard={firstCard}
