@@ -55,7 +55,7 @@ const Card = ({
     >
       <div
         className="card-back"
-        style={{ visibility: backFaceVisibility, color: "white" }}
+        style={{ visibility: backFaceVisibility }}
       ></div>
       <div className="card-front" style={{ background: color }}></div>
     </section>
