@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const GameBoard = () => {
-  const [cells, setCells] = useState([
+  const [grid, setGrid] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -15,11 +15,11 @@ const GameBoard = () => {
 
   return (
     <div className="game-board">
-      {cells.map((cell, i) => {
+      {grid.map((row, rowIndex) => {
         return (
-          <div className="row" key={i}>
-            {cell.map((subCell, j) => {
-              return <div className="cell" key={j}></div>;
+          <div className="row" key={rowIndex}>
+            {row.map((cell, cellIndex) => {
+              return <div className="cell" key={cellIndex}>{cell}</div>;
             })}
           </div>
         );
