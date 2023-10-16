@@ -15,11 +15,11 @@ const GameBoard = () => {
 
   return (
     <div className="game-board">
-      {grid.map((row, rowIndex) => {
+      {grid.map((column, colIndex) => {
         return (
-          <div className="row" key={rowIndex}>
-            {row.map((cell, cellIndex) => {
-              return <div className="cell" key={cellIndex}>{cell}</div>;
+          <div className="column" key={colIndex}>
+            {column.map((number, rowIndex) => {
+              return <div className="cell" key={rowIndex}>{number}</div>;
             })}
           </div>
         );
