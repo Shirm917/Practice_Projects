@@ -1,7 +1,14 @@
-const NumberBtn = ({number,setNumber}) => {
-    return (
-        <button value={number} onClick={(event) => setNumber(event.target.value)}>{number}</button>
-     );
-}
+const NumberBtn = ({ number, chosenNumber, setChosenNumber }) => {
+  return (
+    <button
+      style={{ backgroundColor: number == chosenNumber ? "black" : "gray" }}
+      className="number-btn"
+      value={number}
+      onClick={(event) => setChosenNumber(event.target.value)}
+    >
+      {number}
+    </button>
+  );
+};
 
 export default NumberBtn;
