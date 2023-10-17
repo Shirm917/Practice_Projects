@@ -19,7 +19,7 @@ const GameBoard = () => {
         return (
           <div className="column" key={colIndex}>
             {column.map((number, rowIndex) => {
-              return <div className="cell" key={rowIndex}>{number}</div>;
+              return <div className="cell" key={rowIndex}>{number === 0 ? "" : number}</div>;
             })}
           </div>
         );
