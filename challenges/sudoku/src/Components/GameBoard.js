@@ -22,10 +22,15 @@ const GameBoard = () => {
       <div className="sudoku-board">
         {grid.map((column, colIndex) => {
           return (
-            <div className="column" key={colIndex}>
+            <div key={colIndex}>
               {column.map((number, rowIndex) => {
+                const dividerLineArr = [2, 5];
                 return (
-                  <div className="cell" key={rowIndex}>
+                  <div
+                    key={rowIndex}
+                    style={{borderBottomWidth: dividerLineArr.includes(rowIndex) ? "5px" : "1px", borderRightWidth: dividerLineArr.includes(colIndex) ? "5px" : "1px" }}
+                    className="cell"
+                  >
                     {number === 0 ? "" : number}
                   </div>
                 );
