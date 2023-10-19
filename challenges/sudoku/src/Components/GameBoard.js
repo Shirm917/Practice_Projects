@@ -16,7 +16,7 @@ const GameBoard = () => {
   ]);
   const [chosenNumber, setChosenNumber] = useState(null);
 
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const handleCellClick = (event) => {
     const cellIndexString = event.target.id;

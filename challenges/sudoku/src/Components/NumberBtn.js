@@ -1,12 +1,18 @@
 const NumberBtn = ({ number, chosenNumber, setChosenNumber }) => {
+
+  const handleNumberClick = (event) => {
+    const number = parseInt(event.target.value);
+    setChosenNumber(number);
+  };
+  
   return (
     <button
-      style={{ backgroundColor: number == chosenNumber ? "black" : "gray" }}
+      style={{ backgroundColor: number === chosenNumber ? "black" : "gray" }}
       className="number-btn"
       value={number}
-      onClick={(event) => setChosenNumber(event.target.value)}
+      onClick={handleNumberClick}
     >
-      {number}
+      {number === 0 ? "Delete" : number}
     </button>
   );
 };
