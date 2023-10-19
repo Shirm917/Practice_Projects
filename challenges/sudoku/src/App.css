@@ -29,5 +29,11 @@
 }
 
 .number-btn {
+  width: 100%;
   color: white;
+}
+
+.cell,
+.number-btn {
+  cursor: pointer;
 }
