@@ -24,6 +24,18 @@ const GameBoard = () => {
     setGrid(gridCopy);
   };
 
+  const handleConfirmClick = () => {
+    const gridCopy = [...grid];
+    const correctNumbersArr = gridCopy.map((number,index) => {
+      if (number === solution[index]) {
+        return number;
+      } else {
+        return 0;
+      }
+    });
+    setGrid(correctNumbersArr);
+  }
+
   return (
     <section className="game-board">
       <div className="sudoku-board">
@@ -61,7 +73,7 @@ const GameBoard = () => {
           );
         })}
       </div>
-      <button className="confirm-btn">Confirm</button>
+      <button className="confirm-btn" onClick={handleConfirmClick}>Confirm</button>
     </section>
   );
 };
