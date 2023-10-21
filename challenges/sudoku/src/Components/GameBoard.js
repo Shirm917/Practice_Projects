@@ -1,22 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NumberBtn from "./NumberBtn";
-import { logDOM } from "@testing-library/react";
+import { makepuzzle, solvepuzzle } from "sudoku";
 
 const GameBoard = () => {
-  const [grid, setGrid] = useState([
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ]);
+  const [grid, setGrid] = useState([]);
   const [chosenNumber, setChosenNumber] = useState(null);
 
   const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  useEffect(() => {
+    const puzzle = makepuzzle();
+    // const solutionArray = solvepuzzle(puzzle);
+    setGrid(puzzle);
+  }, []);
 
   const handleCellClick = (event) => {
     const cellIndexString = event.target.id;
@@ -27,26 +23,32 @@ const GameBoard = () => {
     setGrid(gridCopy);
   };
 
+  // const puzzle = makepuzzle();
+  // const solutionArray = solvepuzzle(puzzle);
+
+  // console.log("puzzle", puzzle);
+  // console.log("solution", solutionArray);
+
   return (
     <section className="game-board">
       <div className="sudoku-board">
-        {grid.map((column, colIndex) => {
+        {grid.map((number, numberIndex) => {
+          const thickBorders = {
+            borderLeftWidth:
+              numberIndex % 3 === 0 && numberIndex % 9 !== 0 ? "5px" : "0px",
+            borderTopWidth:
+              numberIndex >= 27 && numberIndex <= 35 ? "5px" : "1px",
+            borderBottomWidth:
+              numberIndex >= 45 && numberIndex <= 53 ? "5px" : "1px",
+          };
           return (
-            <div key={colIndex}>
-              {column.map((number, rowIndex) => {
-                const dividerLineArr = [2, 5];
-                return (
-                  <div
-                    key={rowIndex}
-                    id={`${colIndex}${rowIndex}`}
-                    style={{borderBottomWidth: dividerLineArr.includes(rowIndex) ? "5px" : "1px", borderRightWidth: dividerLineArr.includes(colIndex) ? "5px" : "1px" }}
-                    className="cell"
-                    onClick={handleCellClick}
-                  >
-                    {number === 0 ? "" : number}
-                  </div>
-                );
-              })}
+            <div
+              key={numberIndex}
+              className="cell"
+              onClick={handleCellClick}
+              style={thickBorders}
+            >
+              {number}
             </div>
           );
         })}
