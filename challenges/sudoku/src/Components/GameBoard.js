@@ -11,8 +11,15 @@ const GameBoard = () => {
 
   useEffect(() => {
     const puzzle = makepuzzle();
-    const solutionArray = solvepuzzle(puzzle);
     setGrid(puzzle);
+    const solutionArray = solvepuzzle(puzzle);
+    solutionArray.map((number, index) => {
+      if (number === 0) {
+        solutionArray[index] = 9;
+      }
+      return number;
+    });
+    console.log(solutionArray);
     setSolution(solutionArray);
   }, []);
 
@@ -26,7 +33,7 @@ const GameBoard = () => {
 
   const handleConfirmClick = () => {
     const gridCopy = [...grid];
-    const correctNumbersArr = gridCopy.map((number,index) => {
+    const correctNumbersArr = gridCopy.map((number, index) => {
       if (number === solution[index]) {
         return number;
       } else {
@@ -34,7 +41,10 @@ const GameBoard = () => {
       }
     });
     setGrid(correctNumbersArr);
-  }
+    if (correctNumbersArr.every((number) => number !== 0)) {
+      alert("You win!");
+    }
+  };
 
   return (
     <section className="game-board">
@@ -73,7 +83,9 @@ const GameBoard = () => {
           );
         })}
       </div>
-      <button className="confirm-btn" onClick={handleConfirmClick}>Confirm</button>
+      <button className="confirm-btn" onClick={handleConfirmClick}>
+        Confirm
+      </button>
     </section>
   );
 };
