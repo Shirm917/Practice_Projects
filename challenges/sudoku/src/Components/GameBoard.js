@@ -4,30 +4,25 @@ import { makepuzzle, solvepuzzle } from "sudoku";
 
 const GameBoard = () => {
   const [grid, setGrid] = useState([]);
+  const [solution, setSolution] = useState([]);
   const [chosenNumber, setChosenNumber] = useState(null);
 
   const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   useEffect(() => {
     const puzzle = makepuzzle();
-    // const solutionArray = solvepuzzle(puzzle);
+    const solutionArray = solvepuzzle(puzzle);
     setGrid(puzzle);
+    setSolution(solutionArray);
   }, []);
 
   const handleCellClick = (event) => {
     const cellIndexString = event.target.id;
-    const columnIndex = parseInt(cellIndexString[0]);
-    const rowIndex = parseInt(cellIndexString[1]);
+    const cellIndex = parseInt(cellIndexString);
     const gridCopy = [...grid];
-    gridCopy[columnIndex][rowIndex] = chosenNumber;
+    gridCopy[cellIndex] = chosenNumber;
     setGrid(gridCopy);
   };
-
-  // const puzzle = makepuzzle();
-  // const solutionArray = solvepuzzle(puzzle);
-
-  // console.log("puzzle", puzzle);
-  // console.log("solution", solutionArray);
 
   return (
     <section className="game-board">
@@ -44,11 +39,12 @@ const GameBoard = () => {
           return (
             <div
               key={numberIndex}
+              id={numberIndex}
               className="cell"
               onClick={handleCellClick}
               style={thickBorders}
             >
-              {number}
+              {number === 0 ? "" : number}
             </div>
           );
         })}
@@ -65,6 +61,7 @@ const GameBoard = () => {
           );
         })}
       </div>
+      <button className="confirm-btn">Confirm</button>
     </section>
   );
 };

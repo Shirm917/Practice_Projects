@@ -4,7 +4,7 @@ const NumberBtn = ({ number, chosenNumber, setChosenNumber }) => {
     const number = parseInt(event.target.value);
     setChosenNumber(number);
   };
-  
+
   return (
     <button
       style={{ backgroundColor: number === chosenNumber ? "black" : "gray" }}
